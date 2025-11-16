@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 INIT_PATH=$(pwd)
-CACHE_PATH="~/.cache/hyprland-init"
+CACHE_PATH=~/.cache/hyprland-init
 
 mkdir -p "$CACHE_PATH"
 
