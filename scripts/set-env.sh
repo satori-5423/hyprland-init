@@ -2,8 +2,8 @@
 
 INIT_PATH=$(pwd)
 
-sudo cp -v "$INIT_PATH/files/pacman/mirrorlist /etc/pacman.d/mirrorlist"
-sudo cp -v "$INIT_PATH/files/pacman/pacman.conf /etc/pacman.conf"
+sudo cp -v "$INIT_PATH/files/pacman/mirrorlist" /etc/pacman.d/mirrorlist
+sudo cp -v "$INIT_PATH/files/pacman/pacman.conf" /etc/pacman.conf
 sudo pacman -Syyuu --noconfirm
 
 git clone https://github.com/end-4/dots-hyprland.git "$INIT_PATH"
