@@ -1,0 +1,13 @@
+##
+## Arch Linux repository mirrorlist
+## Generated on 2025-01-05
+##
+
+## China
+Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
+
+## Japan
+#Server = https://mirrors.cat.net/archlinux/$repo/os/$arch
+
+## China
+#Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch

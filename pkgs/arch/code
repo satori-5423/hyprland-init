@@ -1,0 +1,8 @@
+clang
+cmake
+eslint
+jdk-openjdk
+maven
+pnpm
+rust
+rust-src

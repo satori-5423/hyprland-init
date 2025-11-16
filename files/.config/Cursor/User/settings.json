@@ -1,0 +1,12 @@
+{
+  "window.commandCenter": true,
+  "files.autoSave": "afterDelay",
+  "window.zoomLevel": 1,
+  "redhat.telemetry.enabled": true,
+  "editor.fontSize": 18,
+  "editor.fontFamily": "'JetBrainsMono Nerd Font', 'monospace', monospace",
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "notebook.defaultFormatter": "Continue.continue",
+  "workbench.colorTheme": "Cursor Light",
+  "material-code.primaryColor": "#C3DCFB"
+}
