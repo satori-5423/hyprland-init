@@ -26,7 +26,7 @@ perl -i -pe '
 perl -i -pe '
     if (/bind\s*=\s*Super,\s*X,.*launch_first_available\.sh/) {
         if (!/"zeditor"/) {
-            s/(launch_first_available\.sh\s*)/"zeditor" /;
+            s/(launch_first_available\.sh\s*)/$1 . "\"zeditor\" " /e;
         }
     }
 ' "$KEYBINDS"
