@@ -9,3 +9,5 @@ mkdir -p ~/.config/
 
 cp -rv ./files/.config/* ~/.config/
 cp -v ./files/dotfiles/.* ~/
+
+gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal kitty
