@@ -1,17 +1,23 @@
 #!/usr/bin/env bash
 
+# Get the directory where the script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 # Check if running as root
 if [[ $(id -u) -eq 0 ]]; then
     echo -e "\033[1;31mError: Do not run this script as root. Please use a normal user.\033[0m"
     exit 1
 fi
 
+# Exit on error
+set -e
+
 echo "Initializing..."
 
-./scripts/set-env.sh
-./scripts/install.sh
-./scripts/config.sh
-./scripts/custom.sh
+"$SCRIPT_DIR/scripts/set-env.sh"
+"$SCRIPT_DIR/scripts/install.sh"
+"$SCRIPT_DIR/scripts/config.sh"
+"$SCRIPT_DIR/scripts/custom.sh"
 
 sudo snapper -c root create-config /
 

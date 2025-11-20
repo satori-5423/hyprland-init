@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+# Get the directory where the script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# The parent directory of scripts/ is the root of the repo
+REPO_ROOT="$(dirname "$SCRIPT_DIR")"
+
+# Exit on error
+set -e
+
 chsh -s $(which fish)
 
 mkdir -p ~/.config/
@@ -7,7 +15,7 @@ mkdir -p ~/.config/
 # git clone https://github.com/LazyVim/starter ~/.config/nvim
 # rm -rfv ~/.config/nvim/.git
 
-cp -rv ./files/.config/* ~/.config/
-cp -v ./files/dotfiles/.* ~/
+cp -rv "$REPO_ROOT/files/.config/"* ~/.config/
+cp -v "$REPO_ROOT/files/dotfiles/."* ~/
 
 gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal kitty
