@@ -11,7 +11,7 @@ set -e
 # --- Kitty Configuration Injection ---
 KITTY_CONF="$HOME/.config/kitty/kitty.conf"
 KITTY_EXTRA="$REPO_ROOT/files/extra/kitty/kitty.conf"
-KITTY_MARKER="# --- Hyprland Init Config ---"
+KITTY_MARKER="# vim:ft=kitty"
 
 if [[ -f "$KITTY_EXTRA" ]]; then
     echo "Injecting Kitty configuration..."
