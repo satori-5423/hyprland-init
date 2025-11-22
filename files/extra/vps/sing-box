@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+bash <(curl -sL https://raw.githubusercontent.com/fscarmen/sing-box/main/sing-box.sh)
