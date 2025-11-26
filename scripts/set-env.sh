@@ -34,7 +34,7 @@ fi
 
 if [[ -d "$CACHE_PATH/dots-hyprland/.git/" ]]; then
   cd "$CACHE_PATH/dots-hyprland/"
-  git pull
+  git stash && git pull
 else
   git clone https://github.com/end-4/dots-hyprland.git "$CACHE_PATH/dots-hyprland/"
 fi
