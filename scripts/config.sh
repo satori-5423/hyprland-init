@@ -18,5 +18,6 @@ mkdir -p ~/.config/
 cp -rv "$REPO_ROOT/files/.config/"* ~/.config/
 cp -v "$REPO_ROOT/files/dotfiles/."* ~/
 
+gsettings set org.gnome.desktop.wm.preferences button-layout ':'
 gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
 gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal kitty
