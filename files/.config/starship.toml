@@ -17,7 +17,7 @@ $character"""
 [python]
 symbol = "🐍 "
 disabled = false
-format = '[](bold fg:yellow)[${symbol}${version} (\($virtualenv\))](bg:yellow fg:black)[](bold fg:yellow) '
+format = '[](bold fg:yellow)[${symbol}${version}(\($virtualenv\))](bg:yellow fg:black)[](bold fg:yellow)'
 
 # Replace the "❯" symbol in the prompt with "➜"
 [character]                            # The name of the module we are configuring is "character"
@@ -33,7 +33,7 @@ style = "bg: cyan"
 symbol = "󰘬"
 truncation_length = 12
 truncation_symbol = ""
-format = "󰜥 [](bold fg:cyan)[$symbol $branch(:$remote_branch)](fg:black bg:cyan)[ ](bold fg:cyan)"
+format = "󰜥 [](bold fg:cyan)[$symbol $branch(:$remote_branch)](fg:black bg:cyan)[](bold fg:cyan)"
 
 [git_commit]
 commit_hash_length = 4
