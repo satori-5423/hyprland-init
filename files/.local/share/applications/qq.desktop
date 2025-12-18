@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=QQ
-Exec=GTK_IM_MODULE=fcitx XMODIFIERS=@im=fcitx linuxqq --ozone-platform=x11 %U
+Exec=env GTK_IM_MODULE=fcitx XMODIFIERS=@im=fcitx linuxqq --ozone-platform=x11 %U
 Terminal=false
 Type=Application
 Icon=qq
