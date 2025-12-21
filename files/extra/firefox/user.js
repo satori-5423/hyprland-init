@@ -1,0 +1,2 @@
+full-screen-api.ignore-widgets  true
+browser.newtabpage.pinned  [{"url":"https://archlinux.org/","label":"Arch Linux","baseDomain":"archlinux.org"},{"url":"https://github.com/","label":"GitHub","baseDomain":"github.com"},{"url":"https://youtube.com/","label":"YouTube"},{"url":"https://translate.google.com/","label":"Google 翻译"},{"url":"https://aistudio.google.com/"},{"url":"https://chatgpt.com/","label":"ChatGPT"},{"url":"https://instagram.com/","label":"Instagram"},{"url":"https://twitter.com/","label":"Twitter"}]
