@@ -3,3 +3,8 @@
 #identity-icon-label {
   display: none !important;
 }
+
+.sidebar-splitter {
+    display: none !important;
+}
+
