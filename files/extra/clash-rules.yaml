@@ -1,0 +1,13 @@
+rules:
+  # Genshin Impact
+  - "DST-PORT,8999,DIRECT"
+  - "DST-PORT,22101,DIRECT"
+  - "DST-PORT,22102,DIRECT"
+  - "DST-PORT,42472,DIRECT"
+  - "DOMAIN-SUFFIX,hoyoverse.com,DIRECT"
+  - "DOMAIN-SUFFIX,yuanshen.com,DIRECT"
+  # SteamDB
+  - "DOMAIN-SUFFIX,steamdb.info,DIRECT"
+  # All
+  - "GEOIP,CN,DIRECT"
+  - "MATCH,proxy"
