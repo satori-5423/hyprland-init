@@ -7,6 +7,7 @@ efibootmgr
 fastfetch
 fish
 grub
+grub-btrfs
 linux-firmware
 linux-zen
 linux-zen-headers
@@ -17,5 +18,6 @@ ntfs-3g
 os-prober
 pacman-contrib
 snapper
+snap-pac
 wget
 zram-generator

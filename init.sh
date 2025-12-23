@@ -5,8 +5,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Check if running as root
 if [[ $(id -u) -eq 0 ]]; then
-    echo -e "\033[1;31mError: Do not run this script as root. Please use a normal user.\033[0m"
-    exit 1
+  echo -e "\033[1;31mError: Do not run this script as root. Please use a normal user.\033[0m"
+  exit 1
 fi
 
 # Exit on error
@@ -20,6 +20,7 @@ echo "Initializing..."
 "$SCRIPT_DIR/scripts/custom.sh"
 
 sudo snapper -c root create-config /
+sudo systemctl enable --now grub-btrfsd
 
 echo "Done"
 echo "Please restart your computer"
