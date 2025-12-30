@@ -19,5 +19,6 @@ os-prober
 pacman-contrib
 snapper
 snap-pac
+uwsm
 wget
 zram-generator
