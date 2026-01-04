@@ -11,10 +11,10 @@ CACHE_PATH=~/.cache/hyprland-init
 # Exit on error
 set -e
 
-mkdir -p "$CACHE_PATH"
+mkdir --parents "$CACHE_PATH"
 
-sudo cp -v "$INIT_PATH/files/pacman/mirrorlist" /etc/pacman.d/mirrorlist
-sudo cp -v "$INIT_PATH/files/pacman/pacman.conf" /etc/pacman.conf
+sudo cp --verbose "$INIT_PATH/files/pacman/mirrorlist" /etc/pacman.d/mirrorlist
+sudo cp --verbose "$INIT_PATH/files/pacman/pacman.conf" /etc/pacman.conf
 sudo pacman -Syyuu --noconfirm
 
 # Install base-devel and git if not present

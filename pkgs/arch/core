@@ -1,6 +1,8 @@
 base
 base-devel
+bluez
 bluez-utils
+btrfs-assistant
 btrfs-progs
 dkms
 efibootmgr
@@ -8,6 +10,7 @@ fastfetch
 fish
 grub
 grub-btrfs
+gst-plugin-pipewire
 linux-firmware
 linux-zen
 linux-zen-headers
@@ -17,8 +20,10 @@ man-pages-zh_cn
 ntfs-3g
 os-prober
 pacman-contrib
+pipewire
+pipewire-alsa
 snapper
 snap-pac
-uwsm
+sof-firmware
 wget
 zram-generator

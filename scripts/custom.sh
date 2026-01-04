@@ -8,4 +8,4 @@ REPO_ROOT="$(dirname "$SCRIPT_DIR")"
 # Exit on error
 set -e
 
-cp -v "$REPO_ROOT/files/hyprland/"* ~/.config/hypr/custom/
+cp --verbose "$REPO_ROOT/files/hyprland/"* ~/.config/hypr/custom/

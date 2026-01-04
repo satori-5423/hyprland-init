@@ -23,7 +23,7 @@ read_pkgs() {
 include_pkgs=()
 
 # Read base packages
-for category in apps code core fonts game; do
+for category in core fonts game code qemu apps; do
     while IFS= read -r pkg; do
         include_pkgs+=("$pkg")
     done < <(read_pkgs "$REPO_ROOT/pkgs/arch/$category")

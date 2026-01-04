@@ -8,15 +8,17 @@ REPO_ROOT="$(dirname "$SCRIPT_DIR")"
 # Exit on error
 set -e
 
-chsh -s $(which fish)
+chsh --shell $(which fish)
 
-mkdir -p ~/.config/
+mkdir --parents ~/.config/
+mkdir --parents ~/.local/
 
 # git clone https://github.com/LazyVim/starter ~/.config/nvim
 # rm -rfv ~/.config/nvim/.git
 
-cp -rv "$REPO_ROOT/files/.config/"* ~/.config/
-cp -v "$REPO_ROOT/files/dotfiles/."* ~/
+cp --recursive --verbose "$REPO_ROOT/files/.config/"* ~/.config/
+cp --recursive --verbose "$REPO_ROOT/files/.local/"* ~/.local/
+cp --verbose "$REPO_ROOT/files/dotfiles/."* ~/
 
 gsettings set org.gnome.desktop.wm.preferences button-layout ':'
 gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
