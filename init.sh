@@ -20,7 +20,7 @@ echo "Initializing..."
 "$SCRIPT_DIR/scripts/custom.sh"
 
 sudo snapper -c root create-config /
-# paru -Syu --asdeps inotify-tools
+paru -Syu --asdeps inotify-tools
 sudo systemctl enable --now grub-btrfsd
 
 echo "Done"

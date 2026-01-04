@@ -6,7 +6,6 @@ btrfs-assistant
 btrfs-progs
 dkms
 efibootmgr
-fastfetch
 fish
 grub
 grub-btrfs
@@ -17,6 +16,7 @@ linux-zen-headers
 man-db
 man-pages
 man-pages-zh_cn
+networkmanager
 ntfs-3g
 os-prober
 pacman-contrib
