@@ -98,5 +98,6 @@ while IFS= read -r pkg; do
 done < <(read_pkgs "$REPO_ROOT/pkgs/aur")
 
 if [[ ${#aur_pkgs[@]} -gt 0 ]]; then
-    paru -Syu --needed --noconfirm "${aur_pkgs[@]}"
+    # paru -Syu --needed --noconfirm "${aur_pkgs[@]}"
+    paru -Syu --needed "${aur_pkgs[@]}"
 fi
