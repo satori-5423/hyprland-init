@@ -36,7 +36,8 @@ if [[ -d "$CACHE_PATH/dots-hyprland/.git/" ]]; then
   cd "$CACHE_PATH/dots-hyprland/"
   git stash && git pull
 else
-  git clone https://github.com/end-4/dots-hyprland.git "$CACHE_PATH/dots-hyprland/"
+  # git clone https://github.com/end-4/dots-hyprland.git "$CACHE_PATH/dots-hyprland/"
+  git clone https://github.com/satori-5423/dots-hyprland.git "$CACHE_PATH/dots-hyprland/"
 fi
 cd "$CACHE_PATH/dots-hyprland/" && chmod +x ./setup && ./setup install
 
