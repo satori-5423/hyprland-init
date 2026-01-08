@@ -75,6 +75,10 @@ fi
 
 # Samba
 if command -v smbd &> /dev/null; then
-    echo "Configuring Samba..."
+    if [ ! -f /etc/samba/smb.conf ]; then
+        echo "Downloading default smb.conf..."
+        sudo curl -L "https://git.samba.org/samba.git/?p=samba.git;a=blob_plain;f=examples/smb.conf.default;hb=HEAD" -o /etc/samba/smb.conf
+    fi
+    sudo smbpasswd -a $USER
     sudo systemctl enable --now smb.service nmb.service
 fi
