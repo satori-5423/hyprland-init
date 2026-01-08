@@ -88,7 +88,7 @@ fi
 
 # 5. Install Official Packages
 echo "Installing official packages..."
-paru -Syu --needed --noconfirm "${include_pkgs[@]}"
+paru -Syu --needed --noconfirm "${include_pkgs[@]}" --assume-installed wine
 
 # 6. Install AUR Packages
 echo "Installing AUR packages..."
@@ -98,6 +98,5 @@ while IFS= read -r pkg; do
 done < <(read_pkgs "$REPO_ROOT/pkgs/aur")
 
 if [[ ${#aur_pkgs[@]} -gt 0 ]]; then
-    # paru -Syu --needed --noconfirm "${aur_pkgs[@]}"
-    paru -Syu --needed "${aur_pkgs[@]}"
+    paru -Syu --needed --noconfirm "${aur_pkgs[@]}"
 fi
