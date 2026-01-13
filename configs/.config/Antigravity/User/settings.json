@@ -1,0 +1,29 @@
+{
+  "workbench.colorTheme": "Tokyo Night Light",
+  "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', 'monospace', monospace",
+  "window.zoomLevel": 1.15,
+  "files.autoSave": "afterDelay",
+  "extensions.ignoreRecommendations": true,
+  "workbench.editorAssociations": {
+    "*.pdf": "latex-workshop-pdf-hook"
+  },
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "python.languageServer": "Default",
+  "latex-workshop.message.warning.show": false,
+  "latex-workshop.message.error.show": false,
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-xelatex",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ],
+      "env": {}
+    }
+  ]
+}

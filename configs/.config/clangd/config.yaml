@@ -1,0 +1,25 @@
+CompileFlags:
+  Add:
+    - --no-cuda-version-check
+    - -Wno-unknown-warning-option
+    - -D__clangd__
+  Remove:
+    - -forward-unknown-to-host-compiler
+    - -expt-*
+    - --expt-*
+    - -gencode*
+    - --generate-code*
+    - -Xfatbin*
+    - -arch=*
+    - -rdc=*
+    - -mno-*
+---
+If:
+  PathMatch: .*\.cpp
+CompileFlags:
+  Add: [-std=c++2c]
+---
+If:
+  PathMatch: .*\.c
+CompileFlags:
+  Add: [-std=c2x]

@@ -1,0 +1,7 @@
+bridge-utils
+dnsmasq
+openbsd-netcat
+qemu-base
+vde2
+virt-manager
+virt-viewer

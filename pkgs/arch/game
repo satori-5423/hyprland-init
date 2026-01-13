@@ -1,0 +1,10 @@
+gamemode
+gst-libav
+lib32-gnutls
+lib32-vulkan-icd-loader
+libva-utils
+lutris
+steam
+vulkan-icd-loader
+vulkan-tools
+winetricks

@@ -1,0 +1,11 @@
+include /usr/share/nano/*.nanorc
+include /usr/share/nano/extra/*.nanorc
+
+set autoindent
+set linenumbers
+set multibuffer
+set numbercolor white
+set tabsize 4
+set tabstospaces
+set titlecolor white
+set zap

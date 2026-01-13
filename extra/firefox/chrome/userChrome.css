@@ -1,0 +1,9 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+#identity-icon-label {
+  display: none !important;
+}
+
+.sidebar-splitter {
+    display: none !important;
+}

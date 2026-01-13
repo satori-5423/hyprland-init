@@ -1,0 +1,111 @@
+{
+    "display": {
+        "separator": " "
+    },
+
+    "modules": [
+        {
+            "type": "custom",
+            "format": "┌──────────────────────────────────────────────┐",
+            "outputColor": "cyan"
+        },
+
+        {
+            "type": "custom",
+            "keyWidth": 10,
+            "format": "                {#1;96}Ciallo～(∠・ω< )⌒☆",
+            "outputColor": "default"
+        },
+
+        {
+            "type": "custom",
+            "format": "└──────────────────────────────────────────────┘",
+            "outputColor": "cyan"
+        },
+
+        {
+            "type": "os",
+            "key": "╭─ ",
+            "keyColor": "green"
+        },
+
+        {
+            "type": "kernel",
+            "key": "├─ ",
+            "format": "{1} {2}",
+            "keyColor": "green"
+        },
+
+        {
+            "type": "packages",
+            "key": "├─󰏖 ",
+            "keyColor": "green"
+        },
+
+        {
+            "type": "shell",
+            "key": "╰─ ",
+            "keyColor": "green"
+        },
+
+        {
+            "type": "custom",
+            "format": "     ・・・・・・・・・・・・・・・・・・・・・>",
+            "outputColor": "magenta"
+        },
+
+        {
+            "type": "wm",
+            "key": "╭─ ",
+            "keyColor": "yellow"
+        },
+
+        {
+            "type": "terminal",
+            "key": "├─ ",
+            "keyColor": "yellow"
+        },
+
+        {
+            "type": "terminalfont",
+            "key": "├─ ",
+            "keyColor": "yellow"
+        },
+
+        {
+            "type": "display",
+            "key": "╰─󰧨 ",
+            "keyColor": "yellow"
+        },
+
+        {
+            "type": "custom",
+            "format": "     ・・・・・・・・・・・・・・・・・・・・・>",
+            "outputColor": "magenta"
+        },
+
+        {
+            "type": "cpu",
+            "key": "╭─󰻠 ",
+            "keyColor": "red"
+        },
+
+        {
+            "type": "gpu",
+            "key": "├─󰍛 ",
+            "keyColor": "red"
+        },
+
+        {
+            "type": "disk",
+            "key": "├─ ",
+            "keyColor": "red"
+        },
+
+        {
+            "type": "uptime",
+            "key": "╰─ ",
+            "keyColor": "red"
+        }
+    ]
+}

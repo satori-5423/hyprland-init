@@ -1,0 +1,8 @@
+# 
+# CachyOS v4 mirrors
+# 
+
+Server = https://mirrors.ustc.edu.cn/cachyos/repo/$arch_v4/$repo
+Server = https://mirror.cachyos.org/repo/$arch_v4/$repo
+Server = https://cdn.cachyos.org/repo/$arch_v4/$repo
+Server = https://aur.cachyos.org/repo/$arch_v4/$repo

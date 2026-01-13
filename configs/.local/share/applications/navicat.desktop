@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Navicat Premium Lite 17
+GenericName=Database Development Tool
+Icon=navicat-icon
+Exec=navicat --platform xcb
+Categories=Development;
+Keywords=database;sql;
+
