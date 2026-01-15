@@ -18,7 +18,7 @@ sudo cp --verbose "$INIT_PATH/configs/pacman/pacman.conf" /etc/pacman.conf
 sudo pacman -Syyuu --noconfirm
 
 # Install base-devel if not present
-sudo pacman -S --needed --noconfirm base-devel
+sudo pacman -Syu --needed --noconfirm base-devel
 
 # Install paru if not present
 if ! command -v paru &> /dev/null; then
@@ -30,7 +30,7 @@ if ! command -v paru &> /dev/null; then
     cd "$CACHE_PATH/paru"
     makepkg -si --noconfirm
     cd "$INIT_PATH"
-    paru -S --noconfirm bibata-cursor-theme
+    paru -Syu --needed --noconfirm bibata-cursor-theme
 fi
 
 if [[ -d "$CACHE_PATH/dots-hyprland/.git/" ]]; then

@@ -88,7 +88,8 @@ fi
 
 # 5. Install Official Packages
 echo "Installing official packages..."
-paru -Syu --needed --noconfirm "${include_pkgs[@]}" --assume-installed wine
+sudo pacman -Syu --needed --noconfirm "${include_pkgs[@]}" --assume-installed wine
+paru -Syu --needed --noconfirm wine-tkg-staging-wow64-bin
 
 # 6. Install AUR Packages
 if ask_yes_no "Install AUR packages?"; then
