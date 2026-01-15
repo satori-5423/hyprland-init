@@ -91,12 +91,16 @@ echo "Installing official packages..."
 paru -Syu --needed --noconfirm "${include_pkgs[@]}" --assume-installed wine
 
 # 6. Install AUR Packages
-echo "Installing AUR packages..."
-aur_pkgs=()
-while IFS= read -r pkg; do
-    aur_pkgs+=("$pkg")
-done < <(read_pkgs "$REPO_ROOT/pkgs/aur")
+if ask_yes_no "Install AUR packages?"; then
+    echo "Installing AUR packages..."
+    aur_pkgs=()
+    while IFS= read -r pkg; do
+        aur_pkgs+=("$pkg")
+    done < <(read_pkgs "$REPO_ROOT/pkgs/aur")
 
-if [[ ${#aur_pkgs[@]} -gt 0 ]]; then
-    paru -Syu --needed --noconfirm "${aur_pkgs[@]}"
+    if [[ ${#aur_pkgs[@]} -gt 0 ]]; then
+        paru -Syu --needed --noconfirm "${aur_pkgs[@]}"
+    fi
+else
+    echo "Skipping AUR packages."
 fi
