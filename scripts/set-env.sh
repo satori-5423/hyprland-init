@@ -17,6 +17,20 @@ sudo cp --verbose "$INIT_PATH/configs/pacman/mirrorlist" /etc/pacman.d/mirrorlis
 sudo cp --verbose "$INIT_PATH/configs/pacman/pacman.conf" /etc/pacman.conf
 sudo pacman -Syyuu --noconfirm
 
+# Prompt for EFI directory
+read -p "Enter your EFI directory path (Default: /efi): " EFI_DIR
+EFI_DIR=${EFI_DIR:-/efi}
+echo "Using EFI directory: $EFI_DIR"
+
+sudo mkdir --parents /etc/pacman.d/hooks/
+sudo cp --verbose "$INIT_PATH/configs/pacman/hooks/"* /etc/pacman.d/hooks/
+
+# Update the GRUB hook with the chosen EFI directory
+if [[ -f /etc/pacman.d/hooks/99-grub-install.hook ]]; then
+    sudo sed -i "s|--efi-directory=/efi|--efi-directory=$EFI_DIR|g" /etc/pacman.d/hooks/99-grub-install.hook
+    echo "Updated GRUB hook with EFI directory: $EFI_DIR"
+fi
+
 # Install base-devel if not present
 sudo pacman -Syu --needed --noconfirm base-devel
 
