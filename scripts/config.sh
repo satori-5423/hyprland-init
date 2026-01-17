@@ -22,4 +22,3 @@ cp --verbose "$REPO_ROOT/configs/dotfiles/."* ~/
 
 gsettings set org.gnome.desktop.wm.preferences button-layout ':'
 gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
-gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal kitty
