@@ -20,19 +20,23 @@ return {
 
               if buflisted then
                 local is_special_buf = (
-                  filetype == "NvimTree"
-                  or filetype == "lazyfile"
-                  or filetype == "dashboard"
-                  or filetype == "TelescopePrompt"
-                  or vim.startswith(name, "[No Name]")
-                  or vim.startswith(name, "[Scratch]")
+                  -- Filetypes to ignore (smart buffer delete shouldn't jump to these)
+                  filetype == "neo-tree"
+                  or filetype == "lazy"
+                  or filetype == "trouble"
+                  or filetype == "noice"
+                  or filetype == "qf"
+                  or filetype == "help"
+                  or filetype == "snacks_dashboard"
                   or vim.startswith(name, "term://")
+                  or name == ""
                 )
 
                 if not is_special_buf and buf_id ~= current_buf_nr then
                   table.insert(bufs_to_consider, buf_id)
 
-                  local buf_info = vim.fn.getbufinfo(buf_id)[1]
+                  local buf_info_list = vim.fn.getbufinfo(buf_id)
+                  local buf_info = buf_info_list and buf_info_list[1]
                   if buf_info and buf_info.lastused and buf_info.lastused > last_used_timestamp then
                     last_used_timestamp = buf_info.lastused
                     next_target_buf = buf_id
