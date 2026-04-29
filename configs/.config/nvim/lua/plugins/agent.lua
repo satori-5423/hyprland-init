@@ -9,36 +9,76 @@ return {
   },
   config = function()
     require("codecompanion").setup({
+      adapters = {
+        http = {
+          deepseek_pro = function()
+            return require("codecompanion.adapters").extend("deepseek", {
+              name = "deepseek_pro",
+              schema = {
+                model = {
+                  default = "deepseek-v4-pro",
+                },
+              },
+            })
+          end,
+          deepseek_flash = function()
+            return require("codecompanion.adapters").extend("deepseek", {
+              name = "deepseek_flash",
+              schema = {
+                model = {
+                  default = "deepseek-v4-flash",
+                },
+              },
+            })
+          end,
+        },
+      },
+
       interactions = {
         chat = {
           adapter = "deepseek_pro",
-          agent = {
-            tools = {
-              ["files"] = {
-                opts = {
-                  allow_silent_execution = true,
-                  ignored_directories = {
-                    ".git",
-                    "node_modules",
-                    ".venv",
-                    "env",
-                    "__pycache__",
-                    "target",
-                    "build",
-                  },
-                },
+          opts = {
+            system_prompt = function(ctx)
+              return ctx.default_system_prompt
+                .. string.format(
+                  [[Additional context:
+All non-code text responses must be written in the %s language.
+The user's current working directory is %s.
+The current date is %s.
+The user's Neovim version is %s.
+The user is working on a %s machine. Please respond with system specific commands if applicable.
+
+<exploration_instructions>
+When exploring the project or searching for files:
+1. NEVER use `file_search` with `**/*` blindly as it floods the context window with useless files.
+2. If you need to explore the directory structure, use the `run_command` tool with commands like `ls -la` or `tree -L 2`. 
+   CRITICAL: When using `run_command`, you MUST provide the arguments using exactly this schema: `{"cmd": "your command here", "flag": null}`. Do NOT use `command` or leave the arguments empty.
+3. Determine yourself which directories are useful (e.g., source code, docs) and which are junk (e.g., .git, .venv, node_modules, build, __pycache__). Do NOT enter or read junk directories.
+4. Only inspect files and directories that are highly relevant to the user's request.
+</exploration_instructions>]],
+                  ctx.language,
+                  ctx.cwd,
+                  ctx.date,
+                  ctx.nvim_version,
+                  ctx.os
+                )
+            end,
+          },
+          tools = {
+            ["read_file"] = {
+              opts = {
+                require_approval_before = false,
               },
-              ["ripgrep"] = {
-                opts = {
-                  allow_silent_execution = true,
-                },
+            },
+            ["grep_search"] = {
+              opts = {
+                require_approval_before = false,
               },
-              ["buffer_editor"] = {
-                opts = {
-                  allow_silent_execution = false,
-                },
+            },
+            ["file_search"] = {
+              opts = {
+                require_approval_before = false,
               },
-              "shell",
             },
           },
         },
@@ -68,44 +108,6 @@ return {
         },
       },
 
-      adapters = {
-        http = {
-          deepseek_pro = function()
-            return require("codecompanion.adapters").extend("openai_compatible", {
-              name = "DeepSeek Reasoner",
-              env = {
-                url = "https://api.deepseek.com",
-                api_key = vim.env.DEEPSEEK_API_KEY,
-              },
-              schema = {
-                model = {
-                  default = "deepseek-reasoner",
-                },
-                parameters = {
-                  max_tokens = { default = 8192 },
-                  temperature = { default = 1.0 },
-                },
-              },
-            })
-          end,
-
-          deepseek_flash = function()
-            return require("codecompanion.adapters").extend("openai_compatible", {
-              name = "DeepSeek Flash",
-              env = {
-                url = "https://api.deepseek.com",
-                api_key = vim.env.DEEPSEEK_API_KEY,
-              },
-              schema = {
-                model = {
-                  default = "deepseek-chat",
-                },
-              },
-            })
-          end,
-        },
-      },
-
       opts = {
         send_code = true,
         use_diagnostic_context = false,
@@ -116,3 +118,4 @@ return {
     vim.keymap.set({ "n", "v" }, "<leader>ac", "<cmd>CodeCompanionChat Toggle<cr>", { desc = "AI Agent" })
   end,
 }
+
