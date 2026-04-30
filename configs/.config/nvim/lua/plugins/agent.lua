@@ -53,7 +53,7 @@ When exploring the project or searching for files:
 1. NEVER use `file_search` with `**/*` blindly as it floods the context window with useless files.
 2. If you need to explore the directory structure, use the `run_command` tool with commands like `ls -la` or `tree -L 2`. 
    CRITICAL: When using `run_command`, you MUST provide the arguments using exactly this schema: `{"cmd": "your command here", "flag": null}`. Do NOT use `command` or leave the arguments empty.
-3. Determine yourself which directories are useful (e.g., source code, docs) and which are junk (e.g., .git, .venv, node_modules, build, __pycache__). Do NOT enter or read junk directories.
+3. By default, avoid exploring dependency or build directories (e.g., .git, .venv, node_modules, build, __pycache__). However, you MAY inspect them if you specifically need to verify the actual source code or API of a third-party dependency (e.g., checking for updated or deprecated methods).
 4. Only inspect files and directories that are highly relevant to the user's request.
 </exploration_instructions>]],
                   ctx.language,
