@@ -36,7 +36,7 @@ return {
 
       interactions = {
         chat = {
-          adapter = "deepseek_pro",
+          adapter = "deepseek_flash",
           opts = {
             system_prompt = function(ctx)
               return ctx.default_system_prompt
@@ -117,6 +117,9 @@ When exploring the project or searching for files:
     })
 
     vim.keymap.set({ "n", "v" }, "<leader>aa", "<cmd>CodeCompanionActions<cr>", { desc = "AI Actions" })
-    vim.keymap.set({ "n", "v" }, "<leader>ac", "<cmd>CodeCompanionChat Toggle<cr>", { desc = "AI Agent" })
+    vim.keymap.set({ "n", "v" }, "<leader>ac", "<cmd>CodeCompanionChat Toggle<cr>", { desc = "AI Chat (Flash)" })
+    vim.keymap.set({ "n", "v" }, "<leader>ap", function()
+      vim.cmd("CodeCompanionChat Toggle adapter=deepseek_pro")
+    end, { desc = "AI Chat (Pro)" })
   end,
 }
