@@ -95,6 +95,8 @@ When exploring the project or searching for files:
             relative = "editor",
             width = 0.8,
             height = 0.8,
+            row = math.floor((vim.o.lines - (vim.o.lines * 0.8)) / 2) - 1,
+            border = "rounded",
           },
           keymaps = {
             close = {
@@ -118,4 +120,3 @@ When exploring the project or searching for files:
     vim.keymap.set({ "n", "v" }, "<leader>ac", "<cmd>CodeCompanionChat Toggle<cr>", { desc = "AI Agent" })
   end,
 }
-
