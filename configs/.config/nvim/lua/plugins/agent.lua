@@ -42,7 +42,7 @@ return {
               return ctx.default_system_prompt
                 .. string.format(
                   [[Additional context:
-All non-code text responses must be written in the %s language.
+Respond in the same language as the user's query. If you cannot determine the primary language (e.g., mixed languages), respond in the language indicated by the user's system locale: %s.
 The user's current working directory is %s.
 The current date is %s.
 The user's Neovim version is %s.
@@ -56,7 +56,7 @@ When exploring the project or searching for files:
 3. By default, avoid exploring dependency or build directories (e.g., .git, .venv, node_modules, build, __pycache__). However, you MAY inspect them if you specifically need to verify the actual source code or API of a third-party dependency (e.g., checking for updated or deprecated methods).
 4. Only inspect files and directories that are highly relevant to the user's request.
 </exploration_instructions>]],
-                  ctx.language,
+                  os.getenv("LANG") or os.getenv("LC_ALL") or os.getenv("LC_MESSAGES") or "en_US.UTF-8",
                   ctx.cwd,
                   ctx.date,
                   ctx.nvim_version,
@@ -117,9 +117,6 @@ When exploring the project or searching for files:
     })
 
     vim.keymap.set({ "n", "v" }, "<leader>aa", "<cmd>CodeCompanionActions<cr>", { desc = "AI Actions" })
-    vim.keymap.set({ "n", "v" }, "<leader>ac", "<cmd>CodeCompanionChat Toggle<cr>", { desc = "AI Chat (Flash)" })
-    vim.keymap.set({ "n", "v" }, "<leader>ap", function()
-      vim.cmd("CodeCompanionChat Toggle adapter=deepseek_pro")
-    end, { desc = "AI Chat (Pro)" })
+    vim.keymap.set({ "n", "v" }, "<leader>ac", "<cmd>CodeCompanionChat Toggle<cr>", { desc = "AI Chat" })
   end,
 }
