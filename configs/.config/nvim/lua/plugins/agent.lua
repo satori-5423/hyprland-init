@@ -9,34 +9,9 @@ return {
   },
   config = function()
     require("codecompanion").setup({
-      adapters = {
-        http = {
-          deepseek_pro = function()
-            return require("codecompanion.adapters").extend("deepseek", {
-              name = "deepseek_pro",
-              schema = {
-                model = {
-                  default = "deepseek-v4-pro",
-                },
-              },
-            })
-          end,
-          deepseek_flash = function()
-            return require("codecompanion.adapters").extend("deepseek", {
-              name = "deepseek_flash",
-              schema = {
-                model = {
-                  default = "deepseek-v4-flash",
-                },
-              },
-            })
-          end,
-        },
-      },
-
       interactions = {
         chat = {
-          adapter = "deepseek_flash",
+          adapter = "deepseek",
           opts = {
             system_prompt = function(ctx)
               return ctx.default_system_prompt
@@ -83,7 +58,7 @@ When exploring the project or searching for files:
           },
         },
         inline = {
-          adapter = "deepseek_flash",
+          adapter = "deepseek",
         },
       },
 
