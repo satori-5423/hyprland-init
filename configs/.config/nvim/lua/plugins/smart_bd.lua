@@ -28,6 +28,7 @@ return {
                   or filetype == "qf"
                   or filetype == "help"
                   or filetype == "snacks_dashboard"
+                  or vim.startswith(filetype, "grug-far")
                   or vim.startswith(name, "term://")
                   or name == ""
                 )
@@ -55,6 +56,11 @@ return {
             vim.cmd("bdelete " .. current_buf_nr)
           else
             vim.cmd("bdelete " .. current_buf_nr)
+            -- Neovim will auto-create a [No Name] buffer; make it unlisted so it won't show up
+            local buf = vim.api.nvim_get_current_buf()
+            if vim.api.nvim_buf_get_name(buf) == "" then
+              vim.api.nvim_set_option_value("buflisted", false, { buf = buf })
+            end
           end
         end,
         mode = { "n", "v" },
