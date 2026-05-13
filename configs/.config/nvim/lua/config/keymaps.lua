@@ -1,12 +1,15 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
+
+-- Terminal
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
 
 local map = vim.keymap.set
 
 map("n", "q", "<cmd>q<cr>", { desc = "Quit" })
 map("n", "Q", "q", { noremap = true, desc = "Record Macro" })
+map("n", "U", "<C-r>", { desc = "Redo" })
 
 -- m (<leader>ac)
 map({ "n", "v" }, "m", "<leader>ac", { remap = true, desc = "AI Chat Toggle" })
