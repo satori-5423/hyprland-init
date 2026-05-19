@@ -18,3 +18,8 @@ hl.window_rule({match = {class = "^$", title = "^$", xwayland = 1}, workspace = 
 
 -- Firefox: float and center the bookmarks window
 hl.window_rule({match = {class = "^(firefox)$", title = "^(我的足迹)$"}, float = true, center = true, size = {800, 600}})
+
+-- Prevent virt-manager/QEMU from inhibiting Hyprland keyboard shortcuts
+-- (no_shortcuts_inhibit disallows the app from inhibiting your shortcuts)
+-- This lets SUPER+F, SUPER+1/2/3, etc. work even when VM is fullscreen
+hl.window_rule({match = {class = "^(virt-manager)$"}, no_shortcuts_inhibit = true})
