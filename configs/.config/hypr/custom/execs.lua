@@ -1,4 +1,4 @@
--- Relevant Hyprland wiki section: https://wiki.hyprland.org/Configuring/Keywords/#executing
+-- https://wiki.hypr.land/Configuring/Basics/Autostart/
 
 hl.on("hyprland.start", function()
 	-- Clash Verge

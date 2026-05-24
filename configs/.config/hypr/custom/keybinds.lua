@@ -1,4 +1,4 @@
--- See https://wiki.hyprland.org/Configuring/Binds/
+-- https://wiki.hypr.land/Configuring/Basics/Binds/
 
 -- Window
 hl.unbind("CTRL + SUPER + SHIFT + Up")
@@ -21,12 +21,21 @@ hl.bind(
 	{ description = "App: Text editor" }
 )
 
+-- Lock screen (dispatch to Quickshell's lock handler)
+hl.unbind("SUPER + L")
+hl.bind(
+  "SUPER + L",
+  hl.dsp.global("quickshell:lock"),
+  { description = "Misc: Lock" }
+)
+
 -- Edit configs
 hl.bind(
 	"CTRL + SUPER + Slash",
 	hl.dsp.exec_cmd("xdg-open ~/.config/illogical-impulse/config.json")
 	-- { description = "Edit shell config" }
 )
+
 hl.bind(
 	"CTRL + SUPER + ALT + Slash",
 	hl.dsp.exec_cmd("xdg-open ~/.config/hypr/custom/keybinds.lua")

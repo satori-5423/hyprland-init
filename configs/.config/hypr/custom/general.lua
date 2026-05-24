@@ -1,4 +1,4 @@
--- Here's a list of every variable: https://wiki.hyprland.org/Configuring/Variables/
+-- https://wiki.hypr.land/Configuring/Basics/Monitors/
 
 hl.monitor({
 	output = "",
@@ -6,6 +6,9 @@ hl.monitor({
 	position = "auto",
 	scale = "1.6", -- 2560x1440
 })
+
+-- https://wiki.hypr.land/Configuring/Advanced-and-Cool/
+-- https://wiki.hypr.land/Configuring/Basics/Variables/#input
 
 hl.config({
 	xwayland = {

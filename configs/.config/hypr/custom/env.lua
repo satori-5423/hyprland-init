@@ -1,4 +1,4 @@
--- https://wiki.hyprland.org/Configuring/Environment-variables/
+-- https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
 
 -- Discrete GPU Card
 

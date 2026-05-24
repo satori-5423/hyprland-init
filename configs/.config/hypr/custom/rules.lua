@@ -1,5 +1,5 @@
--- Window/layer rules: https://wiki.hyprland.org/Configuring/Window-Rules/
--- Workspace rules: https://wiki.hyprland.org/Configuring/Workspace-Rules/
+-- https://wiki.hypr.land/Configuring/Basics/Window-Rules/
+-- https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 
 -- Steam: float children, tile the main Steam window
 hl.window_rule({match = {class = "^(steam)$"}, float = true})
