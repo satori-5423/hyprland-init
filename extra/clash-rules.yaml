@@ -19,5 +19,10 @@ rules:
   # SteamDB
   - "DOMAIN-SUFFIX,steamdb.info,DIRECT"
   # All
+  - "GEOSITE,private,DIRECT"
+  - "GEOIP,private,DIRECT,no-resolve"
+  - "GEOIP,lan,DIRECT,no-resolve"
+  - "DOMAIN-SUFFIX,cn,DIRECT"
+  - "GEOSITE,cn,DIRECT"
   - "GEOIP,CN,DIRECT"
   - "MATCH,proxy"
