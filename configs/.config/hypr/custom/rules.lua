@@ -23,3 +23,6 @@ hl.window_rule({match = {class = "^(firefox)$", title = "^(我的足迹)$"}, flo
 -- (no_shortcuts_inhibit disallows the app from inhibiting your shortcuts)
 -- This lets SUPER+F, SUPER+1/2/3, etc. work even when VM is fullscreen
 hl.window_rule({match = {class = "^(virt-manager)$"}, no_shortcuts_inhibit = true})
+
+-- PPet: disable window decorations (the 1px border from general.lua)
+hl.window_rule({match = {class = "^(PPet3)$"}, decorate = false})
