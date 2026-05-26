@@ -49,7 +49,7 @@ fi
 
 if [[ -d "$CACHE_PATH/dots-hyprland/.git/" ]]; then
     cd "$CACHE_PATH/dots-hyprland/"
-    git fetch origin --depth=1 && git reset --hard origin/main
+    git fetch origin --depth=1 && git reset --hard origin/master
 else
     # git clone https://github.com/end-4/dots-hyprland.git "$CACHE_PATH/dots-hyprland/"
     git clone https://github.com/satori-5423/dots-hyprland.git --depth=1 "$CACHE_PATH/dots-hyprland/"
