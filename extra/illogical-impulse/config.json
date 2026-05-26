@@ -3,14 +3,28 @@
     "extraModels": [
       {
         "api_format": "openai",
-        "description": "This is a custom model. Edit the config to add more! | Anyway, this is DeepSeek R1 Distill LLaMA 70B",
-        "endpoint": "https://openrouter.ai/api/v1/chat/completions",
-        "homepage": "https://openrouter.ai/deepseek/deepseek-r1-distill-llama-70b:free",
-        "icon": "spark-symbolic",
-        "key_get_link": "https://openrouter.ai/settings/keys",
-        "key_id": "openrouter",
-        "model": "deepseek/deepseek-r1-distill-llama-70b:free",
-        "name": "Custom: DS R1 Dstl. LLaMA 70B",
+        "description": "DeepSeek V4 Flash | Fast, affordable, with reasoning capabilities",
+        "endpoint": "https://api.deepseek.com/v1/chat/completions",
+        "homepage": "https://platform.deepseek.com/api_keys",
+        "icon": "deepseek-symbolic",
+        "key_get_description": "**Pricing**: Pay-as-you-go, very affordable\n\n**Instructions**: Log into DeepSeek Platform, go to API Keys, click Create new key",
+        "key_get_link": "https://platform.deepseek.com/api_keys",
+        "key_id": "deepseek",
+        "model": "deepseek-v4-flash",
+        "name": "DeepSeek V4 Flash",
+        "requires_key": true
+      },
+      {
+        "api_format": "openai",
+        "description": "DeepSeek V4 Pro | More capable reasoning model for complex tasks",
+        "endpoint": "https://api.deepseek.com/v1/chat/completions",
+        "homepage": "https://platform.deepseek.com/api_keys",
+        "icon": "deepseek-symbolic",
+        "key_get_description": "**Pricing**: Pay-as-you-go, slightly more than Flash but still cheap\n\n**Instructions**: Log into DeepSeek Platform, go to API Keys, click Create new key",
+        "key_get_link": "https://platform.deepseek.com/api_keys",
+        "key_id": "deepseek",
+        "model": "deepseek-v4-pro",
+        "name": "DeepSeek V4 Pro",
         "requires_key": true
       }
     ],
@@ -30,6 +44,7 @@
       "title": "Google Sans Flex"
     },
     "palette": {
+      "accentColor": "",
       "type": "auto"
     },
     "transparency": {
@@ -52,6 +67,8 @@
   },
   "apps": {
     "bluetooth": "kcmshell6 kcm_bluetooth",
+    "changePassword": "kitty -1 --hold=yes fish -i -c 'passwd'",
+    "manageUser": "kcmshell6 kcm_users",
     "network": "kcmshell6 kcm_networkmanagement",
     "networkEthernet": "kcmshell6 kcm_networkmanagement",
     "taskManager": "plasma-systemmonitor --page-name Processes",
@@ -71,18 +88,18 @@
     "parallax": {
       "autoVertical": false,
       "enableSidebar": true,
-      "enableWorkspace": true,
+      "enableWorkspace": false,
       "vertical": false,
       "widgetsFactor": 1.2,
       "workspaceZoom": 1
     },
-    "thumbnailPath": "/home/satori/.config/hypr/custom/scripts/mpvpaper_thumbnails/【无限暖暖】1.11拾光季登录界面4k60帧纯享动画.mp4.jpg",
-    "wallpaperPath": "/home/satori/.local/share/Steam/steamapps/workshop/content/431960/3596162860/【无限暖暖】1.11拾光季登录界面4k60帧纯享动画.mp4",
+    "thumbnailPath": "/home/satori/.config/hypr/custom/scripts/mpvpaper_thumbnails/微信视频2026-01-05_231054_929.mp4.jpg",
+    "wallpaperPath": "/home/satori/.steam/steam/steamapps/workshop/content/431960/3639948534/微信视频2026-01-05_231054_929.mp4",
     "widgets": {
       "clock": {
         "cookie": {
-          "aiStyling": true,
-          "constantlyRotate": false,
+          "aiStyling": false,
+          "constantlyRotate": true,
           "dateInClock": true,
           "dateStyle": "bubble",
           "dialNumberStyle": "full",
@@ -90,15 +107,25 @@
           "hourMarks": true,
           "minuteHandStyle": "classic",
           "secondHandStyle": "classic",
-          "sides": 12,
+          "sides": 7,
           "timeIndicators": false,
           "useSineCookie": false
         },
         "digital": {
-          "animateChange": true
+          "adaptiveAlignment": true,
+          "animateChange": true,
+          "font": {
+            "family": "Google Sans Flex",
+            "roundness": 0,
+            "size": 90,
+            "weight": 350,
+            "width": 100
+          },
+          "showDate": true,
+          "vertical": false
         },
         "enable": true,
-        "placementStrategy": "free",
+        "placementStrategy": "leastBusy",
         "quote": {
           "enable": false,
           "text": ""
@@ -111,7 +138,7 @@
       },
       "weather": {
         "enable": false,
-        "placementStrategy": "free",
+        "placementStrategy": "leastBusy",
         "x": 400,
         "y": 100
       }
@@ -221,7 +248,7 @@
   },
   "conflictKiller": {
     "autoKillNotificationDaemons": false,
-    "autoKillTrays": false
+    "autoKillTrays": true
   },
   "crosshair": {
     "code": "0;P;d;1;0l;10;0o;2;1b;0"
@@ -239,28 +266,6 @@
     ],
     "pinnedOnStartup": false
   },
-  "enabledPanels": [
-    "iiBar",
-    "iiBackground",
-    "iiCheatsheet",
-    "iiDock",
-    "iiLock",
-    "iiMediaControls",
-    "iiNotificationPopup",
-    "iiOnScreenDisplay",
-    "iiOnScreenKeyboard",
-    "iiOverlay",
-    "iiOverview",
-    "iiPolkit",
-    "iiRegionSelector",
-    "iiReloadPopup",
-    "iiScreenCorners",
-    "iiSessionScreen",
-    "iiSidebarLeft",
-    "iiSidebarRight",
-    "iiVerticalBar",
-    "iiWallpaperSelector"
-  ],
   "hacks": {
     "arbitraryRaceConditionDelay": 20
   },
@@ -283,6 +288,13 @@
     },
     "ui": "zh_CN"
   },
+  "launcher": {
+    "pinnedApps": [
+      "org.kde.dolphin",
+      "kitty",
+      "cmake-gui"
+    ]
+  },
   "light": {
     "antiFlashbang": {
       "enable": false
@@ -297,7 +309,7 @@
   "lock": {
     "blur": {
       "enable": true,
-      "extraZoom": 1.1,
+      "extraZoom": 1,
       "radius": 100
     },
     "centerClock": true,
@@ -343,6 +355,8 @@
     "centerIcons": true,
     "columns": 5,
     "enable": true,
+    "orderBottomUp": false,
+    "orderRightLeft": false,
     "rows": 2,
     "scale": 0.18
   },
@@ -352,6 +366,9 @@
     "weeb": 1
   },
   "regionSelector": {
+    "annotation": {
+      "useSatty": false
+    },
     "circle": {
       "padding": 10,
       "strokeWidth": 6
@@ -499,6 +516,7 @@
   "updates": {
     "adviseUpdateThreshold": 75,
     "checkInterval": 120,
+    "enableCheck": true,
     "stronglyAdviseUpdateThreshold": 200
   },
   "waffles": {
@@ -531,6 +549,7 @@
     },
     "tweaks": {
       "smootherMenuAnimations": true,
+      "smootherSearchBar": true,
       "switchHandlePositionFix": true
     }
   },
