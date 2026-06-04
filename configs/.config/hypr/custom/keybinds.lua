@@ -23,11 +23,7 @@ hl.bind(
 
 -- Lock screen (dispatch to Quickshell's lock handler)
 hl.unbind("SUPER + L")
-hl.bind(
-  "SUPER + L",
-  hl.dsp.global("quickshell:lock"),
-  { description = "Misc: Lock" }
-)
+hl.bind("SUPER + L", hl.dsp.global("quickshell:lock"), { description = "Misc: Lock" })
 
 -- Edit configs
 hl.bind(
