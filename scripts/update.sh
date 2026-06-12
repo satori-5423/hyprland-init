@@ -13,6 +13,7 @@ sed -i '1i # vim:ft=kitty\nbackground_opacity 0.8\n' ~/.config/kitty/kitty.conf
 sed -i 's/font_size 11.0/font_size 20.0/g' ~/.config/kitty/kitty.conf
 sed -i 's/change_font_size all/change_font_size current/g' ~/.config/kitty/kitty.conf
 sed -i '/cursor_trail 1/a cursor_trail_decay 0.1 0.42\ncursor_trail_start_threshold 0' ~/.config/kitty/kitty.conf
+sed -i '/# Scroll & Zoom/a scrollbar scrolled-and-hovered' ~/.config/kitty/kitty.conf
 
 # fish
 sed -i 's/enable_transience/# enable_transience/g' ~/.config/fish/config.fish
