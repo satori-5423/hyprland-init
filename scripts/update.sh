@@ -22,4 +22,4 @@ cp -v "$REPO_ROOT/configs/.config/fontconfig/fonts.conf" ~/.config/fontconfig/fo
 fc-cache -fv
 
 # dolphinrc
-cp -v ~/ii-original-dots-backup/.config/dolphinrc ~/.config/dolphinrc
+cp -v "$REPO_ROOT/configs/.config/dolphinrc" ~/.config/dolphinrc
