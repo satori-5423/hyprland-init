@@ -14,7 +14,7 @@ sudo ln -sf /dev/null /etc/pacman.d/hooks/05-snap-pac-pre.hook
 sudo ln -sf /dev/null /etc/pacman.d/hooks/zz-snap-pac-post.hook
 
 # Update and reinstall
-if [[ "$USER" = "satori" ]]; then
+if [[ "$USER" = "satori" && -d ~/GitHub/dots-hyprland/ ]]; then
     # For me (satori-5423)
     cd ~/GitHub/dots-hyprland/
 else
