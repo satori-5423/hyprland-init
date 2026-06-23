@@ -34,6 +34,13 @@ hl.window_rule({
 	size = { 1000, 800 },
 })
 
+-- An anime game launcher
+hl.window_rule({
+	match = { class = "^(moe.launcher.an-anime-game-launcher)$", title = "^(An Anime Game Launcher)$" },
+	float = true,
+	center = true,
+})
+
 -- Discard blank Wine windows (class + title both empty, xwayland)
 hl.window_rule({
 	match = { class = "^$", title = "^$", xwayland = 1 },
