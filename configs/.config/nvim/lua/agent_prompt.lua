@@ -26,14 +26,17 @@ local M = {}
 ---@param ctx table CodeCompanion context object
 ---@return string
 function M.build(ctx)
-  return string.format(
-    template,
-    os.getenv("LANG") or os.getenv("LC_ALL") or os.getenv("LC_MESSAGES") or "en_US.UTF-8",
-    ctx.cwd,
-    ctx.date,
-    ctx.nvim_version,
-    ctx.os
-  )
+    return string.format(
+        template,
+        os.getenv("LANG")
+            or os.getenv("LC_ALL")
+            or os.getenv("LC_MESSAGES")
+            or "en_US.UTF-8",
+        ctx.cwd,
+        ctx.date,
+        ctx.nvim_version,
+        ctx.os
+    )
 end
 
 return M
