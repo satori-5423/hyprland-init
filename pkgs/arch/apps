@@ -1,5 +1,4 @@
 ark
-chromium
 discord
 docker
 docker-compose
@@ -11,7 +10,6 @@ firefox
 gimp
 kitty
 lazygit
-neovim
 nvtop
 obs-studio
 plasma-browser-integration

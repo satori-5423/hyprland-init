@@ -15,6 +15,7 @@ linux-zen-headers
 man-db
 man-pages
 man-pages-zh_cn
+neovim
 networkmanager
 pacman-contrib
 pipewire
