@@ -1,5 +1,12 @@
 gamemode
 gst-libav
+gst-plugin-pipewire
+gst-plugin-va
+gst-plugins-bad
+gst-plugins-base
+gst-plugins-good
+gst-plugins-ugly
+gstreamer
 lib32-gnutls
 lib32-vulkan-icd-loader
 libva-utils

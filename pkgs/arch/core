@@ -9,14 +9,6 @@ efibootmgr
 fish
 grub
 grub-btrfs
-gst-libav
-gst-plugin-pipewire
-gst-plugin-va
-gst-plugins-bad
-gst-plugins-base
-gst-plugins-good
-gst-plugins-ugly
-gstreamer
 linux-firmware
 linux-zen
 linux-zen-headers
