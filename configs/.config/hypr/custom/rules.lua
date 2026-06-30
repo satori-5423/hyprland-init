@@ -1,45 +1,48 @@
 -- https://wiki.hypr.land/Configuring/Basics/Window-Rules/
 -- https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 
+-- ====== Helper functions ======
+
+--- Float all children, tile the main window
+local function float_tile(class, main_title)
+	hl.window_rule({ match = { class = class }, float = true })
+	hl.window_rule({ match = { class = class, title = main_title }, tile = true })
+end
+
+--- Float and center a window, optionally with a specific size
+local function float_center(class, title, width, height)
+	local rule = { match = { class = class, title = title }, float = true, center = true }
+	if width and height then
+		rule.size = { width, height }
+	end
+	hl.window_rule(rule)
+end
+
+-- ====== Float children + tile main window ======
+
 -- Steam: float children, tile the main Steam window
-hl.window_rule({ match = { class = "^(steam)$" }, float = true })
-hl.window_rule({ match = { class = "^(steam)$", title = "^(Steam)$" }, tile = true })
-
+float_tile("^(steam)$", "^(Steam)$")
 -- QQ: float children, tile the main QQ window
-hl.window_rule({ match = { class = "^(QQ)$" }, float = true })
-hl.window_rule({ match = { class = "^(QQ)$", title = "^(QQ)$" }, tile = true })
-
+float_tile("^(QQ)$", "^(QQ)$")
 -- WeChat: float children, tile the main WeChat window
-hl.window_rule({ match = { class = "^(wechat)$" }, float = true })
-hl.window_rule({ match = { class = "^(wechat)$", title = "^(微信)$" }, tile = true })
+float_tile("^(wechat)$", "^(微信)$")
+
+-- ====== Float and center ======
 
 -- Firefox: float and center the subwindows
-hl.window_rule({
-	match = { class = "^(firefox)$", title = "^(我的足迹)$" },
-	float = true,
-	center = true,
-	size = { 800, 600 },
-})
-hl.window_rule({
-	match = { class = "^(firefox)$", title = "^正在打开.*$" },
-	float = true,
-	center = true,
-})
+float_center("^(firefox)$", "^(我的足迹)$", 800, 600)
+float_center("^(firefox)$", "^正在打开.*$")
 
 -- Zed: float and center the settings window
-hl.window_rule({
-	match = { class = "^(dev.zed.Zed)$", title = "^(Zed — Settings)$" },
-	float = true,
-	center = true,
-	size = { 1000, 800 },
-})
+float_center("^(dev.zed.Zed)$", "^(Zed — Settings)$", 1000, 800)
 
 -- An anime game launcher
-hl.window_rule({
-	match = { class = "^(moe.launcher.an-anime-game-launcher)$", title = "^(An Anime Game Launcher)$" },
-	float = true,
-	center = true,
-})
+float_center("^(moe.launcher.an-anime-game-launcher)$", "^(An Anime Game Launcher)$")
+
+-- Btrfs Assistant
+float_center("^(btrfs-assistant)$", "^(Btrfs Assistant)$")
+
+-- ====== One-off rules ======
 
 -- Discard blank Wine windows (class + title both empty, xwayland)
 hl.window_rule({
@@ -52,8 +55,3 @@ hl.window_rule({
 -- (no_shortcuts_inhibit disallows the app from inhibiting your shortcuts)
 -- This lets SUPER+F, SUPER+1/2/3, etc. work even when VM is fullscreen
 hl.window_rule({ match = { class = "^(virt-manager)$" }, no_shortcuts_inhibit = true })
-
-
--- Useless
--- PPet: disable window decorations (the 1px border from general.lua)
-hl.window_rule({ match = { class = "^(PPet3)$" }, decorate = false })
