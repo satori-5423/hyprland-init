@@ -18,6 +18,7 @@ sed -i '/# Scroll & Zoom/a scrollbar scrolled-and-hovered' ~/.config/kitty/kitty
 
 # fish
 sed -i 's/enable_transience/# enable_transience/g' ~/.config/fish/config.fish
+sed -i "s/'eza --icons'/'eza --icons=auto'/g" ~/.config/fish/config.fish
 
 # fontconfig
 cp -v "$REPO_ROOT/configs/.config/fontconfig/fonts.conf" ~/.config/fontconfig/fonts.conf
