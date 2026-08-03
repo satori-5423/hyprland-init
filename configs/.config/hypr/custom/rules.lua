@@ -18,6 +18,15 @@ local function float_center(class, title, width, height)
 	hl.window_rule(rule)
 end
 
+--- Send matching windows to the hidden garbage workspace and make them invisible
+local function discard(match)
+	hl.window_rule({
+		match = match,
+		workspace = "special:garbage silent",
+		opacity = 0,
+	})
+end
+
 -- ====== Float children + tile main window ======
 
 -- Steam: float children, tile the main Steam window
@@ -42,14 +51,13 @@ float_center("^(moe.launcher.an-anime-game-launcher)$", "^(An Anime Game Launche
 -- Btrfs Assistant
 float_center("^(btrfs-assistant)$", "^(Btrfs Assistant)$")
 
--- ====== One-off rules ======
+-- Blank Wine windows (class + title both empty, xwayland)
+discard({ class = "^$", title = "^$", xwayland = 1 })
 
--- Discard blank Wine windows (class + title both empty, xwayland)
-hl.window_rule({
-	match = { class = "^$", title = "^$", xwayland = 1 },
-	workspace = "special:garbage silent",
-	opacity = 0,
-})
+-- Blank Qt SNI proxy windows (xembedsniproxy, e.g. leftover tray icons)
+discard({ class = "^(xembedsniproxy)$", title = "^$", xwayland = 1 })
+
+-- ====== One-off rules ======
 
 -- Prevent virt-manager/QEMU from inhibiting Hyprland keyboard shortcuts
 -- (no_shortcuts_inhibit disallows the app from inhibiting your shortcuts)
