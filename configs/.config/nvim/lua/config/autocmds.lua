@@ -7,6 +7,36 @@
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
+local no_name_augroup =
+    vim.api.nvim_create_augroup("CleanupNoName", { clear = true })
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    group = no_name_augroup,
+    desc = "Wipe leftover empty [No Name] buffers when a real file is opened",
+    callback = function()
+        if vim.api.nvim_buf_get_name(0) == "" then
+            return
+        end
+        local visible = {}
+        for _, win in ipairs(vim.api.nvim_list_wins()) do
+            visible[vim.api.nvim_win_get_buf(win)] = true
+        end
+        for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+            if
+                vim.api.nvim_buf_is_valid(bufnr)
+                and vim.fn.buflisted(bufnr) == 1
+                and vim.api.nvim_buf_get_name(bufnr) == ""
+                and vim.bo[bufnr].buftype == ""
+                and not vim.bo[bufnr].modified
+                and not visible[bufnr]
+                and vim.api.nvim_buf_line_count(bufnr) <= 1
+            then
+                pcall(vim.api.nvim_buf_delete, bufnr, { force = true })
+            end
+        end
+    end,
+})
+
 local cc_perf_augroup =
     vim.api.nvim_create_augroup("CodeCompanionPerf", { clear = true })
 
