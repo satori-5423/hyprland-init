@@ -31,6 +31,7 @@
 
 ### 预备条件
 - **Arch Linux** 系统。
+- **根文件系统为 Btrfs**（snapper / grub-btrfsd 依赖，本脚本仅支持 Btrfs）。
 - 互联网连接。
 - 已安装 **Git** (`sudo pacman -S git`)。
 - 一个具有 `sudo` 权限的普通用户。
