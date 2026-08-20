@@ -14,12 +14,12 @@ sudo ln -sf /dev/null /etc/pacman.d/hooks/05-snap-pac-pre.hook
 sudo ln -sf /dev/null /etc/pacman.d/hooks/zz-snap-pac-post.hook
 
 # Update and reinstall
-if [[ "$USER" = "satori" && -d ~/GitHub/dots-hyprland/ ]]; then
-    # For me (satori-5423)
-    cd ~/GitHub/dots-hyprland/
+if [[ -d "$HOME/GitHub/dots-hyprland/.git" ]]; then
+    # Local fork, keep local changes
+    cd "$HOME/GitHub/dots-hyprland"
 else
-    # Standard init
-    cd ~/.cache/hyprland-init/dots-hyprland/
+    # Cached clone, update to latest
+    cd "$HOME/.cache/hyprland-init/dots-hyprland"
     git fetch origin --depth=1 && git reset --hard origin/master
 fi
 ./setup install || true

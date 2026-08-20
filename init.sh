@@ -12,7 +12,8 @@ fi
 # Exit on error
 set -e
 
-if [[ "$USER" = "satori" && -d ~/GitHub/dots-hyprland/ ]] || [[ -d ~/.cache/hyprland-init/dots-hyprland/ ]]; then
+# Update mode if a dots-hyprland repo already exists
+if [[ -d "$HOME/GitHub/dots-hyprland/.git" ]] || [[ -d "$HOME/.cache/hyprland-init/dots-hyprland/.git" ]]; then
     echo "Updating..."
     "$SCRIPT_DIR/scripts/update.sh"
     "$SCRIPT_DIR/scripts/custom.sh"
