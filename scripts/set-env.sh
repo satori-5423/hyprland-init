@@ -11,15 +11,20 @@ CACHE_PATH=~/.cache/hyprland-init
 # Exit on error
 set -e
 
+source "$SCRIPT_DIR/lib.sh"
+
 mkdir --parents "$CACHE_PATH"
 
 sudo cp --verbose "$INIT_PATH/configs/pacman/mirrorlist" /etc/pacman.d/mirrorlist
 sudo cp --verbose "$INIT_PATH/configs/pacman/pacman.conf" /etc/pacman.conf
 sudo pacman -Syyuu --noconfirm
 
-# Prompt for EFI directory
-read -p "Enter your EFI directory path (Default: /efi): " EFI_DIR
-EFI_DIR=${EFI_DIR:-/efi}
+# Detect EFI directory automatically, fall back to manual input
+EFI_DIR="$(detect_efi_dir)" || true
+if [[ -z "$EFI_DIR" ]]; then
+    read -p "Enter your EFI directory path (Default: /efi): " EFI_DIR
+    EFI_DIR=${EFI_DIR:-/efi}
+fi
 echo "Using EFI directory: $EFI_DIR"
 
 sudo mkdir --parents /etc/pacman.d/hooks/
@@ -47,14 +52,19 @@ if ! command -v paru &> /dev/null; then
     paru -Syu --needed --noconfirm bibata-cursor-theme
 fi
 
-if [[ -d "$CACHE_PATH/dots-hyprland/.git/" ]]; then
-    cd "$CACHE_PATH/dots-hyprland/"
-    git fetch origin --depth=1 && git reset --hard origin/master
-else
-    # git clone https://github.com/end-4/dots-hyprland.git "$CACHE_PATH/dots-hyprland/"
-    git clone https://github.com/satori-5423/dots-hyprland.git --depth=1 "$CACHE_PATH/dots-hyprland/"
+# Locate dots-hyprland repo
+DOTS="$(dots_dir)"
+if [[ ! -d "$DOTS/.git" ]]; then
+    echo "Cloning dots-hyprland to $DOTS..."
+    mkdir --parents "$(dirname "$DOTS")"
+    git clone https://github.com/satori-5423/dots-hyprland.git --depth=1 "$DOTS"
 fi
-{ cd "$CACHE_PATH/dots-hyprland/" && chmod +x ./setup && ./setup install; } || true
+if [[ "$DOTS" != "$HOME/GitHub/dots-hyprland" ]]; then
+    # Update cached clone
+    cd "$DOTS"
+    git fetch origin --depth=1 && git reset --hard origin/master
+fi
+{ cd "$DOTS" && chmod +x ./setup && ./setup install; } || true
 
 if [[ -d "$CACHE_PATH/Inoue Takina/" ]]; then
     rm -rf "$CACHE_PATH/Inoue Takina/"
