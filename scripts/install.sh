@@ -8,6 +8,8 @@ REPO_ROOT="$(dirname "$SCRIPT_DIR")"
 # Exit on error
 set -e
 
+source "$SCRIPT_DIR/lib.sh"
+
 # Function to read package list into an array
 read_pkgs() {
     local file="$1"
@@ -55,35 +57,48 @@ for category in code qemu apps; do
 done
 
 # 3. CPU Microcode
-vendor=$(grep -m1 'vendor_id' /proc/cpuinfo | awk '{print $3}')
-case "$vendor" in
-    GenuineIntel)
+echo "Detecting CPU..."
+case "$(detect_cpu_vendor)" in
+    intel)
+        echo "Intel CPU detected, adding intel-ucode..."
         include_pkgs+=("intel-ucode")
         ;;
-    AuthenticAMD)
+    amd)
+        echo "AMD CPU detected, adding amd-ucode..."
         include_pkgs+=("amd-ucode")
         ;;
     *)
-        echo "Warning: Unknown CPU vendor: $vendor"
+        echo "Warning: Unknown CPU vendor, skipping microcode"
         ;;
 esac
 
-# 4. GPU Drivers (Improved Detection)
+# 4. GPU Drivers
 echo "Detecting GPU..."
-gpu_info=$(lspci | grep -E "VGA|3D")
-
-if echo "$gpu_info" | grep -q "NVIDIA"; then
-    echo "NVIDIA GPU detected, adding nvidia packages..."
-    while IFS= read -r pkg; do
-        include_pkgs+=("$pkg")
-    done < <(read_pkgs "$REPO_ROOT/pkgs/arch/nvidia")
-fi
-
-if echo "$gpu_info" | grep -q "AMD"; then
-    echo "AMD GPU detected, adding amd packages..."
-    while IFS= read -r pkg; do
-        include_pkgs+=("$pkg")
-    done < <(read_pkgs "$REPO_ROOT/pkgs/arch/amd")
+gpu="$(detect_gpu)"
+for vendor in $gpu; do
+    case "$vendor" in
+        nvidia)
+            echo "NVIDIA GPU detected, adding nvidia packages..."
+            while IFS= read -r pkg; do
+                include_pkgs+=("$pkg")
+            done < <(read_pkgs "$REPO_ROOT/pkgs/arch/nvidia")
+            ;;
+        amd)
+            echo "AMD GPU detected, adding amd packages..."
+            while IFS= read -r pkg; do
+                include_pkgs+=("$pkg")
+            done < <(read_pkgs "$REPO_ROOT/pkgs/arch/amd")
+            ;;
+        intel)
+            echo "Intel GPU detected, adding intel packages..."
+            while IFS= read -r pkg; do
+                include_pkgs+=("$pkg")
+            done < <(read_pkgs "$REPO_ROOT/pkgs/arch/intel")
+            ;;
+    esac
+done
+if [[ -z "$gpu" ]]; then
+    echo "Warning: No GPU detected, skipping GPU packages"
 fi
 
 # 5. Install Official Packages
