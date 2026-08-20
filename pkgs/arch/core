@@ -12,6 +12,7 @@ grub-btrfs
 linux-firmware
 linux-zen
 linux-zen-headers
+lostfiles
 man-db
 man-pages
 man-pages-zh_cn

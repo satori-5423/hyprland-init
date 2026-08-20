@@ -49,7 +49,7 @@ float_center("^(dev.zed.Zed)$", "^(Zed — Settings)$", 1000, 800)
 float_center("^(moe.launcher.an-anime-game-launcher)$", "^(An Anime Game Launcher)$")
 
 -- Btrfs Assistant
-float_center("^(btrfs-assistant)$", "^(Btrfs Assistant)$")
+float_center("^(btrfs-assistant)$")
 
 -- Blank Wine windows (class + title both empty, xwayland)
 discard({ class = "^$", title = "^$", xwayland = 1 })
