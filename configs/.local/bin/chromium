@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# npx playwright install chromium
+
+exec npx playwright open --viewport-size="1600,900" "$@"

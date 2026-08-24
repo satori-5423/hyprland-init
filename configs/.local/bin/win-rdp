@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+exec xfreerdp3 /network:lan /bpp:32 +clipboard /sound:sys:pulse -grab-keyboard /scale-desktop:160 /dynamic-resolution /cert:ignore
+
+# /v:192.168.122.x /u:satori /p:******
