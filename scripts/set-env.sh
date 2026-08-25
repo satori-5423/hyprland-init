@@ -66,10 +66,15 @@ if [[ "$DOTS" != "$HOME/GitHub/dots-hyprland" ]]; then
 fi
 { cd "$DOTS" && chmod +x ./setup && ./setup install; } || true
 
-if [[ -d "$CACHE_PATH/Inoue Takina/" ]]; then
-    rm -rf "$CACHE_PATH/Inoue Takina/"
+# Build and install the GRUB theme from PKGBUILD
+BUILD_DIR="$CACHE_PATH/grub-theme-takina"
+if [[ -d "$BUILD_DIR" ]]; then
+    rm -rf "$BUILD_DIR"
 fi
-tar -xzvf "$INIT_PATH/configs/grub/Inoue-Takina.tar.gz" --directory "$CACHE_PATH"
-cd "$CACHE_PATH/Inoue Takina/" && chmod +x ./install.sh && sudo ./install.sh
-
+mkdir --parents "$BUILD_DIR"
+cp "$INIT_PATH/configs/grub/PKGBUILD" \
+   "$INIT_PATH/configs/grub/grub-theme-takina.install" \
+   "$INIT_PATH/configs/grub/Inoue-Takina.tar.gz" "$BUILD_DIR/"
+cd "$BUILD_DIR"
+makepkg -si --noconfirm
 cd "$INIT_PATH"

@@ -1,0 +1,21 @@
+pkgname=grub-theme-takina
+pkgver=1.0
+pkgrel=1
+pkgdesc="Inoue Takina GRUB2 bootloader theme"
+arch=('any')
+license=('GPL-3.0-or-later')
+optdepends=('grub: to use this theme with the GRUB bootloader')
+install="${pkgname}.install"
+source=("Inoue-Takina.tar.gz")
+sha256sums=('76ad3d79767f66a3d36d7f083ea2c5eb91b588dec7c27eb79893f72fb7424c04')
+
+package() {
+  # Theme files (dir name must stay "Takina")
+  local theme_dir="$pkgdir/usr/share/grub/themes/Takina"
+  install -dm755 "$theme_dir"
+  cp -r "$srcdir/Inoue Takina/Takina/." "$theme_dir/"
+
+  # Normalize permissions
+  find "$theme_dir" -type d -exec chmod 755 {} +
+  find "$theme_dir" -type f -exec chmod 644 {} +
+}

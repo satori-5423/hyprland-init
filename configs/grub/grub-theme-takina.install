@@ -1,0 +1,28 @@
+#!/bin/bash
+# grub-theme-takina.install — post-install hints only (never modifies system config)
+
+post_install() {
+    cat <<'EOF'
+
+==> To enable this theme, add the following line to /etc/default/grub:
+    GRUB_THEME="/usr/share/grub/themes/Takina/theme.txt"
+
+==> Then regenerate your GRUB config:
+    # grub-mkconfig -o /boot/grub/grub.cfg
+
+EOF
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    cat <<'EOF'
+
+==> The Takina theme has been removed. If you no longer use it, remove the
+    GRUB_THEME line from /etc/default/grub, then regenerate your GRUB config:
+    # grub-mkconfig -o /boot/grub/grub.cfg
+
+EOF
+}
