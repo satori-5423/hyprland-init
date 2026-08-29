@@ -59,7 +59,7 @@ if [[ ! -d "$DOTS/.git" ]]; then
     mkdir --parents "$(dirname "$DOTS")"
     git clone https://github.com/satori-5423/dots-hyprland.git --depth=1 "$DOTS"
 fi
-if [[ "$DOTS" != "$HOME/GitHub/dots-hyprland" ]]; then
+if [[ "$DOTS" != "$XDG_PROJECTS_DIR/GitHub/dots-hyprland" ]]; then
     # Update cached clone
     cd "$DOTS"
     git fetch origin --depth=1 && git reset --hard origin/master

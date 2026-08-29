@@ -4,8 +4,8 @@
 
 # Locate the dots-hyprland repo
 dots_dir() {
-    if [[ -d "$HOME/GitHub/dots-hyprland/.git" ]]; then
-        echo "$HOME/GitHub/dots-hyprland"
+    if [[ -d "$XDG_PROJECTS_DIR/GitHub/dots-hyprland/.git" ]]; then
+        echo "$XDG_PROJECTS_DIR/GitHub/dots-hyprland"
     else
         echo "$HOME/.cache/hyprland-init/dots-hyprland"
     fi

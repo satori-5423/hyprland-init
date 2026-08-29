@@ -14,9 +14,9 @@ sudo ln -sf /dev/null /etc/pacman.d/hooks/05-snap-pac-pre.hook
 sudo ln -sf /dev/null /etc/pacman.d/hooks/zz-snap-pac-post.hook
 
 # Update and reinstall
-if [[ -d "$HOME/GitHub/dots-hyprland/.git" ]]; then
+if [[ -d "$XDG_PROJECTS_DIR/GitHub/dots-hyprland/.git" ]]; then
     # Local fork, keep local changes
-    cd "$HOME/GitHub/dots-hyprland"
+    cd "$XDG_PROJECTS_DIR/GitHub/dots-hyprland"
 else
     # Cached clone, update to latest
     cd "$HOME/.cache/hyprland-init/dots-hyprland"
