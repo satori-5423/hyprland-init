@@ -17,10 +17,7 @@ plasma-browser-integration
 plasma-systemmonitor
 samba
 speech-dispatcher
-texlive-langchinese
-texlive-langenglish
-texlive-langjapanese
-texlive-meta
+tree-sitter-cli
 yazi
 zed
 zip
