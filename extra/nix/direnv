@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+mkdir ~/.config/direnv/
+curl -sfL https://raw.githubusercontent.com/nix-community/nix-direnv/master/direnvrc > ~/.config/direnv/direnvrc

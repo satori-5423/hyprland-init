@@ -18,3 +18,4 @@ alias tree 'eza --icons --tree'
 
 # --- source ---
 source ~/.config/fish/auto-Hypr.fish
+direnv hook fish | source
