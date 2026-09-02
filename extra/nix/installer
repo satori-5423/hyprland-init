@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+curl -fsSL https://install.determinate.systems/nix | sh -s -- install
+
+# mkdir -p ~/.config/fish/completions/
+# ln -sf /nix/var/nix/profiles/default/share/fish/vendor_completions.d/nix.fish ~/.config/fish/completions/
