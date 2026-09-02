@@ -1,12 +1,8 @@
 -- https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
 
 -- Discrete GPU Card
-
--- Wayland
-hl.env("AQ_DRM_DEVICES", "/dev/dri/card1:/dev/dri/card2")
-
--- Xwayland
-hl.env("DRI_PRIME", "pci-0000:03:00.0")
+-- hl.env("AQ_DRM_DEVICES", "/dev/dri/card1:/dev/dri/card2")
+-- hl.env("DRI_PRIME", "pci-0000:03:00.0")
 
 -- Locale
 hl.env("LANG", "zh_CN.UTF-8")
@@ -25,7 +21,7 @@ hl.env("GTK_USE_PORTAL", "1")
 hl.env("EDITOR", "nvim")
 
 -- CMAKE_GENERATOR
-hl.env("CMAKE_GENERATOR", "Ninja")
+-- hl.env("CMAKE_GENERATOR", "Ninja")
 
 -- Cursor
 hl.env("XCURSOR_THEME", "Bibata-Modern-Ice")
