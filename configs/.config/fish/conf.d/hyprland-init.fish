@@ -16,6 +16,17 @@ alias vim nvim
 alias nano nvim
 alias tree 'eza --icons --tree'
 
+# --- functions ---
+function ai --description "Switch llama-server"
+    if systemctl --user is-active --quiet llama-server
+        systemctl --user stop llama-server
+        echo "llama-server stopped!"
+    else
+        systemctl --user start llama-server
+        echo "llama-server started!"
+    end
+end
+
 # --- source ---
 source ~/.config/fish/auto-Hypr.fish
 direnv hook fish | source

@@ -1,0 +1,33 @@
+[Unit]
+Description=LLaMA.cpp HTTP Server (Local HIP Optimized)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/satori/Projects/GitHub/llama.cpp/build/bin/llama-server \
+  -m /home/satori/Downloads/Models/Gemma/gemma-4-E4B_q4_0-it.gguf \
+  --mmproj /home/satori/Downloads/Models/Gemma/gemma-4-E4B-it-mmproj.gguf \
+  -c 32768 \
+  -ctk q8_0 -ctv q8_0 \
+  -ngl 99 \
+  --jinja \
+  --alias gemma-4-it \
+  --port 11434 \
+  --host 127.0.0.1
+
+Restart=on-failure
+RestartSec=3s
+
+# Security & Sandboxing
+NoNewPrivileges=yes
+PrivateTmp=yes
+DevicePolicy=closed
+DeviceAllow=/dev/dri/* rw
+DeviceAllow=/dev/kfd rw
+
+# read-only /home
+ProtectHome=read-only
+ProtectSystem=strict
+
+[Install]
+WantedBy=default.target
