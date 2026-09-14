@@ -4,31 +4,60 @@
 
 local map = vim.keymap.set
 
--- Terminal
-map("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
+local textobject = require("config.textobject")
+local paste = require("config.paste")
 
--- Nobody needs this shit
+-- Install the recorders; every keymap of these two features is defined below.
+textobject.setup()
+paste.setup()
+
+-- q: quit the current window
 map("n", "q", "<cmd>q<cr>", { desc = "Quit" })
-map("n", "Q", "q", { noremap = true, desc = "Record Macro" })
+
+-- Q: record a macro
+map("n", "Q", "q", { desc = "Record Macro" })
+
+-- U: redo
 map("n", "U", "<C-r>", { desc = "Redo" })
 
--- m (<leader>ac)
-map({ "n", "v" }, "m", "<leader>ac", { remap = true, desc = "AI Chat Toggle" })
+-- m / M: next / previous occurrence of the last used text object
+map({ "n", "x" }, "m", function()
+    textobject.cycle("next")
+end, { desc = "Next Text Object" })
 
--- C (<leader>us)
-map("n", "C", "<leader>us", { remap = true, desc = "Toggle Spell Check" })
+map({ "n", "x" }, "M", function()
+    textobject.cycle("prev")
+end, { desc = "Previous Text Object" })
 
--- R (<leader>sr)
-map({ "n", "v" }, "R", "<leader>sr", { remap = true, desc = "Search/Replace" })
+-- iw / aw / iW / iB ...: the text objects that Vim resolves itself (mini.ai
+-- hands single Latin letters back to Neovim) are recorded here. The mapping
+-- returns its own keys, which without `remap` runs Vim's built-in text object,
+-- so selecting them behaves exactly as before.
+for _, ai_type in ipairs({ "a", "i" }) do
+    for _, id in ipairs(textobject.builtin_ids) do
+        map({ "x", "o" }, ai_type .. id, function()
+            textobject.record(ai_type, id)
+            return ai_type .. id
+        end, { expr = true })
+    end
+end
 
--- f (<leader>ff)
-map("n", "f", "<leader>ff", { remap = true, desc = "Find Files" })
+-- R: rename the symbol under the cursor (same as <leader>cr)
+map("n", "R", vim.lsp.buf.rename, { desc = "Rename" })
 
--- F (<leader>sg)
-map("n", "F", "<leader>sg", { remap = true, desc = "Live Grep" })
+-- <C-q>: delete the current buffer, keeping the window layout
+map("n", "<C-q>", function()
+    Snacks.bufdelete()
+end, { desc = "Delete Buffer" })
 
--- t (<leader>cs)
-map("n", "t", "<leader>cs", { remap = true, desc = "Document Symbols" })
+-- <Esc><Esc>: leave the terminal and return to normal mode
+map("t", "<Esc><Esc>", [[<C-\><C-n>]], { desc = "Terminal Normal Mode" })
 
--- T (<leader>cd)
-map("n", "T", "<leader>cd", { remap = true, desc = "Line Diagnostics" })
+-- p / P: linewise paste that keeps the cursor column
+map("n", "p", function()
+    paste.paste("p")
+end, { desc = "Paste" })
+
+map("n", "P", function()
+    paste.paste("P")
+end, { desc = "Paste Before" })
