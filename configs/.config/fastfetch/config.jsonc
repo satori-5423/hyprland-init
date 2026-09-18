@@ -13,7 +13,7 @@
         {
             "type": "custom",
             "keyWidth": 10,
-            "format": "                {#1;96}Ciallo～(∠・ω< )⌒☆",
+            "format": "               {#1;96}Ciallo～(∠・ω< )⌒☆ ",
             "outputColor": "default"
         },
 
