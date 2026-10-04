@@ -4,6 +4,7 @@
 
 vim.opt.number = true
 vim.opt.relativenumber = false
+vim.opt.history = 0
 vim.opt.spelllang = { "en", "cjk" }
 vim.g.autoformat = false
 
