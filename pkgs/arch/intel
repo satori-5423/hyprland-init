@@ -1,5 +1,3 @@
 intel-media-driver
-lib32-mesa
-lib32-vulkan-intel
 mesa
 vulkan-intel
