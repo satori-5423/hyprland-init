@@ -27,3 +27,5 @@ hl.bind(
 	hl.dsp.exec_cmd("xdg-open ~/.config/hypr/custom/keybinds.lua")
 	-- { description = "Edit extra keybinds" }
 )
+
+hl.bind("SUPER + SHIFT + W", hl.dsp.exec_cmd('firefox --private-window'), { description = "App: Browser (Private)" })
