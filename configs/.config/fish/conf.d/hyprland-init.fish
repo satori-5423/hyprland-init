@@ -1,5 +1,6 @@
 # --- path ---
 fish_add_path ~/.local/bin
+fish_add_path $XDG_PROJECTS_DIR/GitHub/llama.cpp/build/bin
 
 # --- variables ---
 if test -f ~/.config/user-dirs.dirs
@@ -9,6 +10,9 @@ if test -f ~/.config/user-dirs.dirs
         set -gx $key $val
     end
 end
+set -gx LESS "-R -F -X"
+set -gx MANOPT "-L C"
+set -gx MANPAGER "nvim +Man! +'set statuscolumn='"
 
 # --- alias ---
 alias vi nvim
@@ -24,6 +28,14 @@ function ai --description "Switch llama-server"
     else
         systemctl --user start llama-server
         echo "llama-server started!"
+    end
+end
+
+function stat --wraps stat
+    if test "$argv[1]" = "/"
+        command stat / | string replace -r '2025-12-01' '2024-11-28'
+    else
+        command stat $argv
     end
 end
 
