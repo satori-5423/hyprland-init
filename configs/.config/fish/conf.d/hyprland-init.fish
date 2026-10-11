@@ -1,6 +1,6 @@
 # --- path ---
 fish_add_path ~/.local/bin
-fish_add_path $XDG_PROJECTS_DIR/GitHub/llama.cpp/build/bin
+fish_add_path ~/.local/opt/llama.cpp/bin
 
 # --- variables ---
 if test -f ~/.config/user-dirs.dirs
