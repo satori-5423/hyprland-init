@@ -28,4 +28,5 @@ hl.bind(
 	-- { description = "Edit extra keybinds" }
 )
 
+hl.bind("SUPER + SHIFT + Return", hl.dsp.exec_cmd('kitty -e env NVIM_OVERLAY=1 nvim +terminal +startinsert'), { description = "App: Terminal (Neovim)" })
 hl.bind("SUPER + SHIFT + W", hl.dsp.exec_cmd('firefox --private-window'), { description = "App: Browser (Private)" })

@@ -1,7 +1,11 @@
 -- https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
 
 -- Discrete GPU Card
+
+-- Wayland
 -- hl.env("AQ_DRM_DEVICES", "/dev/dri/card1:/dev/dri/card2")
+
+-- Xwayland
 -- hl.env("DRI_PRIME", "pci-0000:03:00.0")
 
 -- Locale
