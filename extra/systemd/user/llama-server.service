@@ -4,16 +4,21 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/home/satori/Projects/GitHub/llama.cpp/build/bin/llama-server \
-  -m /home/satori/Downloads/Models/Gemma/gemma-4-E4B_q4_0-it.gguf \
-  --mmproj /home/satori/Downloads/Models/Gemma/gemma-4-E4B-it-mmproj.gguf \
-  -c 32768 \
-  -ctk q8_0 -ctv q8_0 \
+ExecStart=/home/satori/.local/opt/llama.cpp/bin/llama-server \
+  --agent \
+  --models-dir /home/satori/Downloads/Models \
+  --models-max 1 \
+  -c 131072 \
+  -ctk q8_0 \
+  -ctv q8_0 \
   -ngl 99 \
+  -b 1024 \
+  -ub 256 \
+  --flash-attn auto \
   --jinja \
-  --alias gemma-4-it \
+  --parallel 1 \
   --port 11434 \
-  --host 127.0.0.1
+  --host localhost
 
 Restart=on-failure
 RestartSec=3s
@@ -28,6 +33,8 @@ DeviceAllow=/dev/kfd rw
 # read-only /home
 ProtectHome=read-only
 ProtectSystem=strict
+RestrictSUIDSGID=yes
+LockPersonality=yes
 
 [Install]
 WantedBy=default.target
