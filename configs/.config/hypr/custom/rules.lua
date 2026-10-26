@@ -48,6 +48,9 @@ float_center("^(dev.zed.Zed)$", "^(Zed — Settings)$", 1000, 800)
 -- An anime game launcher
 float_center("^(moe.launcher.an-anime-game-launcher)$", "^(An Anime Game Launcher)$")
 
+-- Prism Launcher
+float_center("^(org.prismlauncher.PrismLauncher)$", nil, 800, 600)
+
 -- Btrfs Assistant
 float_center("^(btrfs-assistant)$")
 
@@ -63,3 +66,5 @@ discard({ class = "^(xembedsniproxy)$", title = "^$", xwayland = 1 })
 -- (no_shortcuts_inhibit disallows the app from inhibiting your shortcuts)
 -- This lets SUPER+F, SUPER+1/2/3, etc. work even when VM is fullscreen
 hl.window_rule({ match = { class = "^(virt-manager)$" }, no_shortcuts_inhibit = true })
+
+hl.window_rule({ match = { initial_class = "^(xfreerdp)$", class = "^(xfreerdp)$" }, fullscreen = true })
