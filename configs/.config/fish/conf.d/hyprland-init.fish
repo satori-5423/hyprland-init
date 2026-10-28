@@ -10,6 +10,10 @@ if test -f ~/.config/user-dirs.dirs
         set -gx $key $val
     end
 end
+set -gx XDG_CONFIG_HOME "$HOME/.config"
+set -gx XDG_CACHE_HOME "$HOME/.cache"
+set -gx XDG_DATA_HOME "$HOME/.local/share"
+set -gx XDG_STATE_HOME "$HOME/.local/state"
 set -gx LESS "-R -F -X"
 set -gx MANOPT "-L C"
 set -gx MANPAGER "nvim +Man! +'set statuscolumn='"
@@ -40,5 +44,5 @@ function stat --wraps stat
 end
 
 # --- source ---
-source ~/.config/fish/auto-Hypr.fish
 direnv hook fish | source
+source ~/.config/fish/auto-Hypr.fish
