@@ -1,11 +1,2 @@
 [preview]
 wrap = "yes"
-
-[opener]
-zed = [
-    { run = 'zeditor %s', block = false, orphan = true, desc = "Zed" }
-]
-
-[[open.prepend_rules]]
-mime = "text/*"
-use = [ "edit", "zed", "reveal" ]

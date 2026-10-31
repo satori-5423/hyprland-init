@@ -1,0 +1,19 @@
+[[mgr.prepend_keymap]]
+on = ["g", "a"]
+run = "cd ~/.cache"
+desc = "Go to ~/.cache"
+
+[[mgr.prepend_keymap]]
+on = ["g", "l"]
+run = "cd ~/.local"
+desc = "Go to ~/.local"
+
+[[mgr.prepend_keymap]]
+on = ["<C-g>"]
+run = "shell 'lazygit' --block"
+desc = "Open Lazygit"
+
+[[mgr.prepend_keymap]]
+on = ["S"]
+run = "shell 'fish' --block"
+desc = "Open Fish shell"
