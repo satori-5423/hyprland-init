@@ -1,0 +1,111 @@
+mixed-port: 7890
+allow-lan: false
+bind-address: 127.0.0.1
+mode: rule
+log-level: info
+ipv6: false
+tcp-concurrent: true
+unified-delay: true
+external-controller: 127.0.0.1:9090
+secret: "" # openssl rand -hex 32
+profile:
+  store-selected: true
+  store-fake-ip: true
+sniffer:
+  enable: true
+  parse-pure-ip: true
+  override-destination: false
+  sniff:
+    HTTP:
+      ports:
+        - 80
+        - 8080-8880
+    TLS:
+      ports:
+        - 443
+        - 8443
+    QUIC:
+      ports:
+        - 443
+        - 8443
+tun:
+  enable: true
+  device: Mihomo
+  stack: system
+  auto-detect-interface: true
+  auto-route: true
+  auto-redirect: true
+  dns-mode: hijack
+  dns-hijack:
+    - any:53
+    - tcp://any:53
+  mtu: 1500
+  strict-route: true
+  route-exclude-address: []
+dns:
+  enable: true
+  listen: 127.0.0.1:1053
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter-mode: blacklist
+  fake-ip-filter:
+    - '*.lan'
+    - '*.local'
+    - '*.arpa'
+    - 'time.*.com'
+    - 'ntp.*.com'
+    - '+.market.xiaomi.com'
+    - 'localhost.ptlogin2.qq.com'
+    - '*.msftncsi.com'
+    - 'www.msftconnecttest.com'
+  cache-algorithm: arc
+  respect-rules: true
+  prefer-h3: false
+  default-nameserver:
+    - 'https://1.1.1.1/dns-query#proxy'
+  nameserver:
+    - 'https://1.1.1.1/dns-query#proxy'
+    - 'https://dns.google/dns-query#proxy'
+  proxy-server-nameserver:
+    - 'https://1.1.1.1/dns-query#proxy'
+rules:
+  # DoT / DoQ
+  - "DST-PORT,853,REJECT"
+  # Genshin Impact
+  # - "DST-PORT,8999,DIRECT"
+  # - "DST-PORT,22101,DIRECT"
+  # - "DST-PORT,22102,DIRECT"
+  # - "DST-PORT,42472,DIRECT"
+  - "DOMAIN-SUFFIX,hoyoverse.com,proxy"
+  - "DOMAIN-SUFFIX,yuanshen.com,proxy"
+  # SteamDB
+  - "DOMAIN-SUFFIX,steamdb.info,DIRECT"
+  # Bahamut
+  - "GEOSITE,bahamut,tw"
+  # Private
+  - "GEOSITE,private,DIRECT"
+  - "GEOIP,private,DIRECT,no-resolve"
+  - "GEOIP,lan,DIRECT,no-resolve"
+  # China
+  - "DOMAIN-SUFFIX,edu.cn,DIRECT"
+  - "GEOSITE,cn,DIRECT"
+  - "GEOIP,CN,DIRECT,no-resolve"
+  # Default
+  - "MATCH,proxy"
+proxies:
+proxy-groups:
+  - name: proxy
+    type: select
+    # url: http://www.gstatic.com/generate_204
+    # interval: 300
+    # tolerance: 50
+    proxies:
+      - "🇯🇵"
+  - name: tw
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies:
+      - "🇹🇼"
