@@ -18,6 +18,13 @@ set -gx LESS "-R -F -X"
 set -gx MANOPT "-L C"
 set -gx MANPAGER "nvim +Man! +'set statuscolumn='"
 
+set -l proxy_url "http://127.0.0.1:7890"
+for v in {http,https,all}_proxy {HTTP,HTTPS,ALL}_PROXY
+    set -gx $v $proxy_url
+end
+set -gx no_proxy "localhost,127.0.0.1,::1,local.home"
+set -gx NO_PROXY $no_proxy
+
 # --- alias ---
 alias vi nvim
 alias vim nvim
