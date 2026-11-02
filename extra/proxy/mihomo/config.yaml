@@ -63,12 +63,14 @@ dns:
   respect-rules: true
   prefer-h3: false
   default-nameserver:
-    - 'https://1.1.1.1/dns-query#proxy'
+    - 'https://8.8.8.8/dns-query#proxy'
+    - 'https://8.8.4.4/dns-query#proxy'
   nameserver:
-    - 'https://1.1.1.1/dns-query#proxy'
-    - 'https://dns.google/dns-query#proxy'
+    - 'https://8.8.8.8/dns-query#proxy'
+    - 'https://8.8.4.4/dns-query#proxy'
   proxy-server-nameserver:
-    - 'https://1.1.1.1/dns-query#proxy'
+    - 'https://8.8.8.8/dns-query#proxy'
+    - 'https://8.8.4.4/dns-query#proxy'
 rules:
   # Private
   - "GEOSITE,private,DIRECT"
