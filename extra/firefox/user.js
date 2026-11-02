@@ -1,3 +1,10 @@
-user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true)
-user_pref("full-screen-api.ignore-widgets", true)
-user_pref("browser.newtabpage.pinned", [{"url":"https://archlinux.org/","label":"Arch Linux","baseDomain":"archlinux.org"},{"url":"https://github.com/","label":"GitHub","baseDomain":"github.com"},{"url":"https://youtube.com/","label":"YouTube"},{"url":"https://translate.google.com/","label":"Google 翻译"},{"url":"https://aistudio.google.com/"},{"url":"https://chatgpt.com/","label":"ChatGPT"},{"url":"https://instagram.com/","label":"Instagram"},{"url":"https://twitter.com/","label":"Twitter"}])
+user_pref("accessibility.typeaheadfind.flashBar", 0);
+user_pref("browser.bookmarks.showMobileBookmarks", true);
+user_pref("full-screen-api.ignore-widgets", true);
+user_pref("media.peerconnection.enabled", false);
+user_pref("media.webspeech.synth.dont_notify_on_error", true);
+user_pref("network.dns.disablePrefetch", true);
+user_pref("network.http.speculative-parallel-limit", 0);
+user_pref("network.prefetch-next", false);
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+user_pref("browser.newtabpage.pinned", "[{\"url\":\"https://archlinux.org/\",\"label\":\"Arch Linux\",\"baseDomain\":\"archlinux.org\"},{\"url\":\"https://github.com/\",\"label\":\"GitHub\",\"baseDomain\":\"github.com\"},{\"url\":\"https://youtube.com/\",\"label\":\"YouTube\",\"baseDomain\":\"youtube.com\"},{\"url\":\"https://aistudio.google.com/\",\"label\":\"Google AI Studio\",\"baseDomain\":\"aistudio.google.com\"},{\"url\":\"https://translate.google.com/?sl=auto&tl=zh-CN&op=translate\",\"label\":\"Google Translate\",\"baseDomain\":\"translate.google.com\"},{\"url\":\"https://mail.google.com/\",\"label\":\"Gmail\",\"baseDomain\":\"mail.google.com\"},{\"url\":\"https://stackoverflow.com/\",\"label\":\"Stack Overflow\",\"baseDomain\":\"stackoverflow.com\"},{\"url\":\"https://metacubexd.pages.dev/\",\"label\":\"Mihomo Dashboard\",\"baseDomain\":\"metacubexd.pages.dev\"},{\"url\":\"https://platform.deepseek.com/usage\",\"label\":\"DeepSeek\",\"baseDomain\":\"platform.deepseek.com\"},{\"url\":\"https://huggingface.co/\",\"label\":\"Hugging Face\"},{\"url\":\"https://www.wikipedia.org/\",\"label\":\"Wikipedia\"},{\"url\":\"https://z-lib.sk\",\"label\":\"Z-Library\"},{\"url\":\"https://steamdb.info/\",\"label\":\"SteamDB\"},{\"url\":\"https://www.protondb.com/\",\"label\":\"ProtonDB\"},{\"url\":\"https://discord.com/channels/@me\",\"label\":\"Discord\"},{\"url\":\"https://twitter.com/\",\"label\":\"Twitter\"}]");
