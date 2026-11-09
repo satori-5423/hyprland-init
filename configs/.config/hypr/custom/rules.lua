@@ -23,7 +23,7 @@ local function discard(match)
 	hl.window_rule({
 		match = match,
 		workspace = "special:garbage silent",
-		opacity = 0,
+		opacity = "0 override",
 	})
 end
 
@@ -55,7 +55,7 @@ float_center("^(org.prismlauncher.PrismLauncher)$", nil, 800, 600)
 float_center("^(btrfs-assistant)$")
 
 -- Blank Wine windows (class + title both empty, xwayland)
-discard({ class = "^$", title = "^$", xwayland = 1 })
+-- discard({ class = "^$", title = "^$", xwayland = 1 })
 
 -- Blank Qt SNI proxy windows (xembedsniproxy, e.g. leftover tray icons)
 discard({ class = "^(xembedsniproxy)$", title = "^$", xwayland = 1 })
