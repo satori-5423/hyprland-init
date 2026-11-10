@@ -42,14 +42,6 @@ function ai --description "Switch llama-server"
     end
 end
 
-function stat --wraps stat
-    if test "$argv[1]" = "/"
-        command stat / | string replace -r '2025-12-01' '2024-11-28'
-    else
-        command stat $argv
-    end
-end
-
 # --- source ---
 direnv hook fish | source
 source ~/.config/fish/auto-Hypr.fish
