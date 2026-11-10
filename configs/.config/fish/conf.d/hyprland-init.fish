@@ -30,6 +30,7 @@ alias vi nvim
 alias vim nvim
 alias nano nvim
 alias tree 'eza --icons --tree'
+alias sudo='sudo env PATH="$PATH"'
 
 # --- functions ---
 function ai --description "Switch llama-server"
