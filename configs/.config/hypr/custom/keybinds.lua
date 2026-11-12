@@ -30,3 +30,4 @@ hl.bind(
 
 hl.bind("SUPER + SHIFT + Return", hl.dsp.exec_cmd('kitty -e env NVIM_OVERLAY=1 nvim +terminal +startinsert'), { description = "App: Terminal (Neovim)" })
 hl.bind("SUPER + SHIFT + W", hl.dsp.exec_cmd('firefox --private-window'), { description = "App: Browser (Private)" })
+hl.bind("SUPER + Y", hl.dsp.exec_cmd('kitty -1 fish -c yazi'), { description = "App: File manager (Terminal)" })

@@ -42,9 +42,6 @@ float_tile("^(wechat)$", "^(微信)$")
 float_center("^(firefox)$", "^(我的足迹)$", 800, 600)
 float_center("^(firefox)$", "^正在打开.*$")
 
--- Zed: float and center the settings window
-float_center("^(dev.zed.Zed)$", "^(Zed — Settings)$", 1000, 800)
-
 -- An anime game launcher
 float_center("^(moe.launcher.an-anime-game-launcher)$", "^(An Anime Game Launcher)$")
 
@@ -53,6 +50,9 @@ float_center("^(org.prismlauncher.PrismLauncher)$", nil, 800, 600)
 
 -- Btrfs Assistant
 float_center("^(btrfs-assistant)$")
+
+-- Gwenview
+float_center("^(org.kde.gwenview)$", nil, 960, 720)
 
 -- Blank Wine windows (class + title both empty, xwayland)
 -- discard({ class = "^$", title = "^$", xwayland = 1 })
