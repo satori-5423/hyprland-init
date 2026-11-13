@@ -1,27 +1,11 @@
 #!/usr/bin/env bash
 
-# Get the directory where the script is located
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-# The parent directory of scripts/ is the root of the repo
-REPO_ROOT="$(dirname "$SCRIPT_DIR")"
-
-# Exit on error
-set -e
-
 # Disable snap-pac
 sudo mkdir -p /etc/pacman.d/hooks/
 sudo ln -sf /dev/null /etc/pacman.d/hooks/05-snap-pac-pre.hook
 sudo ln -sf /dev/null /etc/pacman.d/hooks/zz-snap-pac-post.hook
 
-# Update and reinstall
-if [[ -d "$XDG_PROJECTS_DIR/GitHub/dots-hyprland/.git" ]]; then
-    # Local fork, keep local changes
-    cd "$XDG_PROJECTS_DIR/GitHub/dots-hyprland"
-else
-    # Cached clone, update to latest
-    cd "$HOME/.cache/hyprland-init/dots-hyprland"
-    git fetch origin --depth=1 && git reset --hard origin/master
-fi
+cd "$XDG_PROJECTS_DIR/GitHub/dots-hyprland"
 ./setup install || true
 
 # Enable snap-pac
