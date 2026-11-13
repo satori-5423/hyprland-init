@@ -1,6 +1,5 @@
 ark
 direnv
-discord
 docker
 docker-compose
 fastfetch
@@ -9,6 +8,7 @@ fcitx5-im
 fcitx5-mozc
 fcitx5-pinyin-zhwiki
 firefox
+flatpak
 gwenview
 kitty
 krdc
