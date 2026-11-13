@@ -32,17 +32,6 @@ alias nano nvim
 alias tree 'eza --icons --tree'
 alias sudo='sudo env PATH="$PATH"'
 
-# --- functions ---
-function ai --description "Switch llama-server"
-    if systemctl --user is-active --quiet llama-server
-        systemctl --user stop llama-server
-        echo "llama-server stopped!"
-    else
-        systemctl --user start llama-server
-        echo "llama-server started!"
-    end
-end
-
 # --- source ---
 direnv hook fish | source
 source ~/.config/fish/auto-Hypr.fish
