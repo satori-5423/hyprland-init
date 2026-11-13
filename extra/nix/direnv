@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
-mkdir ~/.config/direnv/
-curl -sfL https://raw.githubusercontent.com/nix-community/nix-direnv/master/direnvrc > ~/.config/direnv/direnvrc
+git clone https://github.com/nix-community/nix-direnv.git "$XDG_PROJECTS_DIR/GitHub/nix-direnv/"
+
+mkdir -p ~/.config/direnv/
+echo "source $XDG_PROJECTS_DIR/GitHub/nix-direnv/direnvrc" > ~/.config/direnv/direnvrc
