@@ -1,13 +1,14 @@
+mode: rule
 mixed-port: 7890
 allow-lan: false
 bind-address: 127.0.0.1
-mode: rule
 log-level: info
 ipv6: false
 tcp-concurrent: true
 unified-delay: true
 external-controller: 127.0.0.1:9090
 secret: "" # openssl rand -hex 32
+geodata-mode: true
 profile:
   store-selected: true
   store-fake-ip: true
@@ -50,27 +51,44 @@ dns:
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter-mode: blacklist
   fake-ip-filter:
-    - '*.lan'
-    - '*.local'
-    - '*.arpa'
-    - 'time.*.com'
-    - 'ntp.*.com'
-    - '+.market.xiaomi.com'
-    - 'localhost.ptlogin2.qq.com'
-    - '*.msftncsi.com'
-    - 'www.msftconnecttest.com'
+    - "*.lan"
+    - "*.local"
+    - "*.arpa"
+    - "time.*.com"
+    - "ntp.*.com"
+    - "+.market.xiaomi.com"
+    - "localhost.ptlogin2.qq.com"
+    - "*.msftncsi.com"
+    - "www.msftconnecttest.com"
   cache-algorithm: arc
   respect-rules: true
   prefer-h3: false
   default-nameserver:
-    - 'https://8.8.8.8/dns-query#proxy'
-    - 'https://8.8.4.4/dns-query#proxy'
+    - system
+    - 8.8.8.8
+    - 2001:4860:4860::8888
   nameserver:
-    - 'https://8.8.8.8/dns-query#proxy'
-    - 'https://8.8.4.4/dns-query#proxy'
+    - 8.8.8.8
+    - https://dns.google/dns-query
+    - https://cloudflare-dns.com/dns-query
   proxy-server-nameserver:
-    - 'https://8.8.8.8/dns-query#proxy'
-    - 'https://8.8.4.4/dns-query#proxy'
+    - https://dns.google/dns-query
+    - https://cloudflare-dns.com/dns-query
+  fallback:
+    - 8.8.8.8
+    - 8.8.4.4
+    - tls://1.0.0.1:853
+    - tls://dns.google:853
+  fallback-filter:
+    domain:
+      - +.google.com
+      - +.facebook.com
+      - +.youtube.com
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+      - 240.0.0.0/4
+      - 0.0.0.0/32
 rules:
   # Private
   - "GEOSITE,private,DIRECT"
