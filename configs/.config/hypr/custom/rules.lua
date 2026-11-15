@@ -54,6 +54,9 @@ float_center("^(btrfs-assistant)$")
 -- Gwenview
 float_center("^(org.kde.gwenview)$", nil, 960, 720)
 
+-- mpv
+float_center("^(mpv)$", nil, 1280, 720)
+
 -- Blank Wine windows (class + title both empty, xwayland)
 -- discard({ class = "^$", title = "^$", xwayland = 1 })
 
