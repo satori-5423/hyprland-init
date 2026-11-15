@@ -30,3 +30,6 @@ hl.env("EDITOR", "nvim")
 -- Cursor
 hl.env("XCURSOR_THEME", "Bibata-Modern-Ice")
 hl.env("XCURSOR_SIZE", "24")
+
+-- Ollama
+hl.env("OLLAMA_NOHISTORY", "1")
