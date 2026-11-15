@@ -11,4 +11,4 @@ cp -v ./configs/.config/fontconfig/fonts.conf ~/.config/fontconfig/fonts.conf
 fc-cache -fv
 
 # dolphinrc
-cp -v "../configs/.config/dolphinrc" ~/.config/dolphinrc
+cp -v ./configs/.config/dolphinrc ~/.config/dolphinrc
