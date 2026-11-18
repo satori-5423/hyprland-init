@@ -4,13 +4,16 @@
 
 local map = vim.keymap.set
 
+local close = require("config.close")
+local diagnostics = require("config.diagnostics")
 local paste = require("config.paste")
 
 -- Install the recorder; every keymap of this feature is defined below.
 paste.setup()
 
--- q: quit the current window
-map("n", "q", "<cmd>q<cr>", { desc = "Quit" })
+-- q / <C-q>: close the current buffer or empty window / quit everything
+map("n", "q", close.close, { desc = "Close Buffer" })
+map("n", "<C-q>", "<cmd>qa<cr>", { desc = "Quit All" })
 
 -- Q: record a macro
 map("n", "Q", "q", { desc = "Record Macro" })
@@ -28,17 +31,21 @@ map("n", "<Esc><Esc>", function()
     vim.api.nvim_buf_clear_namespace(0, mc_ns, 0, -1)
 end, { desc = "Clear Multicursors" })
 
+-- <leader>cd: line diagnostics in an opaque float
+map("n", "<leader>cd", diagnostics.float, { desc = "Line Diagnostics" })
+
 -- R: rename the symbol under the cursor (same as <leader>cr)
 map("n", "R", vim.lsp.buf.rename, { desc = "Rename" })
 
--- <C-q>: delete the current buffer, keeping the window layout
-map("n", "<C-q>", function()
-    Snacks.bufdelete()
-end, { desc = "Delete Buffer" })
-
 -- <M-Up> / <M-Down>: the same as <M-k> / <M-j>
-map({ "n", "i", "v" }, "<M-Up>", "<M-k>", { desc = "Move Up", remap = true })
-map({ "n", "i", "v" }, "<M-Down>", "<M-j>", { desc = "Move Down", remap = true })
+map({ "n", "i", "v" }, "<M-Up>", "<M-k>", {
+    desc = "Move Up",
+    remap = true,
+})
+map({ "n", "i", "v" }, "<M-Down>", "<M-j>", {
+    desc = "Move Down",
+    remap = true,
+})
 
 -- <Esc><Esc>: leave the terminal and return to normal mode
 map("t", "<Esc><Esc>", [[<C-\><C-n>]], { desc = "Terminal Normal Mode" })
