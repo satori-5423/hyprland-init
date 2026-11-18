@@ -4,15 +4,12 @@
 
 vim.opt.number = true
 vim.opt.relativenumber = false
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.softtabstop = 4
 vim.opt.history = 0
 vim.opt.spelllang = { "en", "cjk" }
 vim.g.autoformat = false
 
 -- Kitty overlay (NVIM_OVERLAY=1): no statusline and no command line
 if vim.env.NVIM_OVERLAY then
-    vim.opt.laststatus = 0
-    vim.opt.cmdheight = 0
+  vim.opt.laststatus = 0
+  vim.opt.cmdheight = 0
 end
