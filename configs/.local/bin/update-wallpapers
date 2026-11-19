@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SRC_DIR="$HOME/.local/share/Steam/steamapps/workshop/content/431960"
+DEST_DIR="$HOME/Videos/Wallpaper Engine"
+
+# Array of video file extensions
+VIDEO_EXTS=("mp4" "mkv" "webm" "avi" "mov" "flv" "wmv" "m4v")
+
+mkdir -p "$DEST_DIR"
+
+# Construct suffix-matching arguments for `find`
+find_args=()
+for ext in "${VIDEO_EXTS[@]}"; do
+  ext="${ext#.}"
+  if ((${#find_args[@]} > 0)); then
+    find_args+=(-o)
+  fi
+  find_args+=(-iname "*.${ext}")
+done
+
+# Traverse subdirectories to create symbolic links
+for item_dir in "$SRC_DIR"/*/; do
+  [[ -d "$item_dir" ]] || continue
+
+  video="$(find "$item_dir" -type f \( "${find_args[@]}" \) -print -quit)"
+  [[ -n "$video" ]] || continue
+
+  item_id="$(basename "$item_dir")"
+  title="$(jq -r '.title // empty' "${item_dir}project.json")"
+  title="${title//\//_}" # Prevent path errors caused by '/' in the title
+
+  ext="${video##*.}"
+  ln -sfn "$video" "$DEST_DIR/${item_id}${title:+ $title}.${ext}"
+done
+
+# Clean up broken symbolic links
+find "$DEST_DIR" -maxdepth 1 -xtype l -delete
