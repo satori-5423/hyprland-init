@@ -31,6 +31,9 @@ alias nano nvim
 alias tree 'eza --icons --tree'
 alias sudo='sudo env PATH="$PATH"'
 
+# --- binds ---
+bind ctrl-w backward-kill-word
+
 # --- source ---
 direnv hook fish | source
 source ~/.config/fish/auto-Hypr.fish
