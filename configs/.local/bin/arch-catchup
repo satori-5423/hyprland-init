@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Official Arch repositories to check
+REPOS=("core" "extra" "multilib")
+
+# Packages to skip, e.g.:
+# IGNORE_PKGS=("hip-runtime-amd" "mesa")
+IGNORE_PKGS=()
+
+is_ignored() {
+  local target="$1"
+  local item
+  for item in "${IGNORE_PKGS[@]}"; do
+    if [[ "$item" == "$target" ]]; then
+      return 0
+    fi
+  done
+  return 1
+}
+
+# 1. Load all installed packages and versions into an associative array
+declare -A installed_pkgs
+while read -r pkg ver; do
+  installed_pkgs[$pkg]="$ver"
+done < <(pacman -Q)
+
+# 2. Scan Arch repos for packages strictly newer than installed versions
+declare -a upgrade_targets=()
+declare -a upgrade_display=()
+
+echo "Comparing installed packages against [${REPOS[*]}]..."
+
+while read -r repo pkg repo_ver _rest; do
+  inst_ver="${installed_pkgs[$pkg]:-}"
+
+  # Skip uninstalled packages and identical versions
+  if [[ -z "$inst_ver" || "$repo_ver" == "$inst_ver" ]]; then
+    continue
+  fi
+
+  # Skip ignored packages
+  if is_ignored "$pkg"; then
+    continue
+  fi
+
+  # Add only if the Arch repo version is strictly newer
+  cmp_result=$(vercmp "$repo_ver" "$inst_ver")
+  if ((cmp_result > 0)); then
+    upgrade_targets+=("${repo}/${pkg}")
+    upgrade_display+=("  ${repo}/${pkg}: ${inst_ver} -> ${repo_ver}")
+  fi
+done < <(pacman -Sl "${REPOS[@]}")
+
+# 3. Print summary and ask for confirmation
+if ((${#upgrade_targets[@]} == 0)); then
+  echo "No installed packages are behind [${REPOS[*]}]."
+  exit 0
+fi
+
+echo
+echo "Found ${#upgrade_targets[@]} package(s) with newer versions in Arch repos:"
+printf '%s\n' "${upgrade_display[@]}"
+echo
+
+read -r -p "Run sudo pacman -S to upgrade these packages? [y/N] " answer
+case "$answer" in
+[yY] | [yY][eE][sS])
+  exec sudo pacman -S "${upgrade_targets[@]}"
+  ;;
+*)
+  echo "Aborted."
+  exit 0
+  ;;
+esac
