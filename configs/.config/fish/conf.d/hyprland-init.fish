@@ -1,3 +1,6 @@
+# test
+alias nv='~/.local/state/nvim-diag/nv'
+
 # --- path ---
 fish_add_path ~/.local/bin
 
@@ -33,6 +36,10 @@ alias sudo='sudo env PATH="$PATH"'
 
 # --- binds ---
 bind ctrl-w backward-kill-word
+bind ctrl-left backward-word
+bind ctrl-right forward-word
+bind alt-left backward-bigword
+bind alt-right forward-bigword
 
 # --- source ---
 direnv hook fish | source
